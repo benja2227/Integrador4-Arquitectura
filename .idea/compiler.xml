@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="eureka-service" />
+        <module name="config-service" />
+        <module name="microMonopatin" />
+        <module name="microFacturacion" />
+        <module name="microCuenta" />
+        <module name="microUsuario" />
+        <module name="microViaje" />
+        <module name="gateway" />
+        <module name="microMantenimiento" />
+      </profile>
+    </annotationProcessing>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="config-service" options="-parameters" />
+      <module name="eureka-service" options="-parameters" />
+      <module name="gateway" options="-parameters" />
+      <module name="microCuenta" options="-parameters" />
+      <module name="microFacturacion" options="-parameters" />
+      <module name="microMantenimiento" options="-parameters" />
+      <module name="microMonopatin" options="-parameters" />
+      <module name="microUsuario" options="-parameters" />
+      <module name="microViaje" options="-parameters" />
+    </option>
+  </component>
+</project>

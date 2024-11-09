@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/App-Monopatin-Electrico/config-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/App-Monopatin-Electrico/eureka-service/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/App-Monopatin-Electrico/gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/App-Monopatin-Electrico/microCuenta/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/App-Monopatin-Electrico/microFacturacion/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/App-Monopatin-Electrico/microMantenimiento/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/App-Monopatin-Electrico/microMonopatin/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/App-Monopatin-Electrico/microUsuario/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/App-Monopatin-Electrico/microViaje/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/App-Monopatin-Electrico/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/App-Monopatin-Electrico/src/main/resources" charset="UTF-8" />
+  </component>
+</project>
