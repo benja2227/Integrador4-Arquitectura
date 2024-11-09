@@ -1,5 +1,4 @@
-package org.example.microfacturacion.entities;
-
+package org.example.microestacion.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,7 +12,8 @@ import jakarta.validation.constraints.NotNull;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Facturacion {
+
+public class Estacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,8 +23,4 @@ public class Facturacion {
     @NotNull
     @NotEmpty
     private Long longitud;
-    @NotNull
-    @NotEmpty
-    private float precioFinal;
-
 }

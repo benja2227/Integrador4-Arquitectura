@@ -5,6 +5,7 @@
     <option name="originalFiles">
       <list>
         <option value="$PROJECT_DIR$/App-Monopatin-Electrico/pom.xml" />
+        <option value="$PROJECT_DIR$/App-Monopatin-Electrico/microEstacion/pom.xml" />
       </list>
     </option>
   </component>

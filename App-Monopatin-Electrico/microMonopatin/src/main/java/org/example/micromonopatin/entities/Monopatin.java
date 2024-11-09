@@ -18,13 +18,13 @@ public class Monopatin {
     private Long id;
     @NotNull
     @NotEmpty
-    private int kmRecorridos;
+    private int kmTotales;
     @NotNull
     @NotEmpty
-    private int latitud;
+    private Long latitud;
     @NotNull
     @NotEmpty
-    private int longitud;
+    private Long longitud;
     @NotNull
     @NotEmpty
     private int tiempoEnPausa;

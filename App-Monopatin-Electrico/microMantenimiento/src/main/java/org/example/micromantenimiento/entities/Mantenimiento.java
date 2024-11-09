@@ -1,11 +1,11 @@
-package org.example.microfacturacion.entities;
-
+package org.example.micromantenimiento.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -13,18 +13,19 @@ import jakarta.validation.constraints.NotNull;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class Facturacion {
+
+public class Mantenimiento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotNull
-    @NotEmpty
-    private Long latitud;
-    @NotNull
-    @NotEmpty
-    private Long longitud;
-    @NotNull
-    @NotEmpty
-    private float precioFinal;
 
+    @NotNull
+    @NotEmpty
+    private Monopatin monopatin;
+    @NotNull
+    @NotEmpty
+    private LocalDate fechaMantenimiento;
+    @NotNull
+    @NotEmpty
+    private int topeKm;
 }
