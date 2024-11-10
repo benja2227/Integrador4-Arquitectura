@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 public class ViajeResponseDTO {
     private LocalDateTime inicio;
     private LocalDateTime fin;
-    private Usuario usuario;
-    private Monopatin monopatin;
+    private Long id_usuario;
+    private Long id_monopatin;
     private int kmRecorridos;
 }

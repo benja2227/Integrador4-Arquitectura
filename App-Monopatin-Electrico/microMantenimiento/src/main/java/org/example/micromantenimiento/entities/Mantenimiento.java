@@ -24,7 +24,7 @@ public class Mantenimiento {
     private Long IDmonopatin;
     @NotNull
     @NotEmpty
-    private LocalDate fechaMantenimiento;
+    private LocalDate fechaMantenimiento; // CHEQUEAR SI ES NECESARIO.
     @NotNull
     @NotEmpty
     private int topeKm;

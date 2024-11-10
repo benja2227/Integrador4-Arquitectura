@@ -29,4 +29,9 @@ public class MonopatinRequestDTO {
 
     @NotNull(message = "El campo enMantenimiento es obligatorio.")
     private boolean enMantenimiento;
+
+    @NotNull(message = "El campo kmMantenimiento es obligatorio.")
+    @NotEmpty(message = "El campo kmMantenimiento no  puede estar vacío")
+    private int kmMantenimiento;
+
 }

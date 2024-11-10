@@ -82,4 +82,15 @@ public class MonopatinController {
         }
         return new ResponseEntity<>(reporte, HttpStatus.OK);
     }
+
+    @PutMapping("/id/{id}/mantenimiento/{enMantenimiento}")
+    public ResponseEntity<MonopatinResponseDTO> update(@PathVariable Long id, @PathVariable boolean enMantenimiento ) {
+        try {
+            final var resultado = this.monopatinService.findById(id);
+            this.monopatinService.updateMantenimiento(id, enMantenimiento);
+            return ResponseEntity.ok(resultado);
+        } catch (NotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

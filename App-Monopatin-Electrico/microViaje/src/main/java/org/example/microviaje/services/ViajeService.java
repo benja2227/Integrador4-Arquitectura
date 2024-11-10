@@ -20,6 +20,9 @@ public class ViajeService {
 
     @Autowired
     private ViajeRepository viajeRepository;
+    private static final int precioPorKm = 50;
+    private static final int precioPorKmConRecarga = 100;
+    private static final int tiempoDePausa = 15;
 
     public List<ViajeResponseDTO> findAll() {
         List<Viaje> viajes = viajeRepository.findAll();
@@ -36,8 +39,8 @@ public class ViajeService {
         Viaje viaje = new Viaje();
         viaje.setInicio(viajeRequestDTO.getInicio());
         viaje.setFin(viajeRequestDTO.getFin());
-        viaje.setUsuario(viajeRequestDTO.getUsuario());
-        viaje.setMonopatin(viajeRequestDTO.getMonopatin());
+        viaje.setId_usuario(viajeRequestDTO.getId_usuario());
+        viaje.setId_monopatin(viajeRequestDTO.getId_monopatin());
         viaje.setKmRecorridos(viajeRequestDTO.getKmRecorridos());
 
         Viaje newViaje = viajeRepository.save(viaje);
@@ -55,11 +58,11 @@ public class ViajeService {
         if (viajeRequestDTO.getFin() != null) {
             viaje.setFin(viajeRequestDTO.getFin() );
         }
-        if (viajeRequestDTO.getUsuario() != null) {
-            viaje.setUsuario(viajeRequestDTO.getUsuario());
+        if (viajeRequestDTO.getId_usuario() != null) {
+            viaje.setId_usuario(viajeRequestDTO.getId_usuario());
         }
-        if (viajeRequestDTO.getMonopatin() != null) {
-            viaje.setMonopatin(viajeRequestDTO.getMonopatin());
+        if (viajeRequestDTO.getId_monopatin() != null) {
+            viaje.setId_monopatin(viajeRequestDTO.getId_monopatin());
         }
         if (viajeRequestDTO.getKmRecorridos() < 0) {
             viaje.setKmRecorridos(viajeRequestDTO.getKmRecorridos());
@@ -81,8 +84,8 @@ public class ViajeService {
         ViajeResponseDTO responseDTO = new ViajeResponseDTO();
         responseDTO.setInicio(viaje.getInicio());
         responseDTO.setFin(viaje.getFin());
-        responseDTO.setUsuario(viaje.getUsuario());
-        responseDTO.setMonopatin(viaje.getMonopatin());
+        responseDTO.setId_usuario(viaje.getId_usuario());
+        responseDTO.setId_monopatin(viaje.getId_monopatin());
         responseDTO.setKmRecorridos(viaje.getKmRecorridos());
         return responseDTO;
     }

@@ -1,4 +1,6 @@
-package org.example.microcuenta.feignClients;
+package org.example.microusuario.feignClients;
+
+
 
 import org.example.microcuenta.DTO.CuentaResponseDTO;
 import org.example.microcuenta.entities.Cuenta;
@@ -8,12 +10,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-
 import java.util.List;
 
-@FeignClient(name="microusuario", url="http://localhost:8010/usuario")
-public interface UsuarioFeignClient {
+    @FeignClient(name="microcuenta", url="http://localhost:8060/cuenta")
+    public interface CuentaFeignClient {
 
-    @GetMapping("/byUsuario/{id}")
-    List<CuentaResponseDTO> getCuentaPorIdUsuario(@PathVariable("id") Long id);
-}
+        @GetMapping("/byCuenta/{id}")
+        List<CuentaResponseDTO> getCuentasPorIdUsuario(@PathVariable("id") Long id);
+
+
+
+    }
+

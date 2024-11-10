@@ -3,7 +3,8 @@ package org.example.microcuenta.controllers;
 
 import org.example.microcuenta.DTO.CuentaRequestDTO;
 import org.example.microcuenta.DTO.CuentaResponseDTO;
-import org.example.microcuenta.services.CuentaServicio;
+import org.example.microcuenta.entities.Cuenta;
+import org.example.microcuenta.services.CuentaService;
 import org.example.microcuenta.services.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class CuentaController {
 
     @Autowired
-    private CuentaServicio cuentaService;
+    private CuentaService cuentaService;
 
     @GetMapping("")
     public ResponseEntity<List<CuentaResponseDTO>> findAll() {
@@ -56,4 +57,11 @@ public class CuentaController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/byUsuario/{id}")
+    public ResponseEntity<List<CuentaResponseDTO>> getCuentasPorIdUsuario(@PathVariable("id") Long id){
+        return ResponseEntity.ok(cuentaService.getCuentasPorIdUsuario(id));
+    }
+
+
 }

@@ -6,6 +6,7 @@ import jakarta.transaction.Transactional;
 import org.example.microcuenta.DTO.CuentaRequestDTO;
 import org.example.microcuenta.DTO.CuentaResponseDTO;
 import org.example.microcuenta.entities.Cuenta;
+import org.example.microcuenta.feignClients.UsuarioFeignClient;
 import org.example.microcuenta.repositories.CuentaRepository;
 import org.example.microcuenta.services.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,12 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class CuentaServicio {
+public class CuentaService {
 
     @Autowired
     private CuentaRepository cuentaRepository;
+    @Autowired
+    private UsuarioFeignClient usuarioFeignClient;
 
     public List<CuentaResponseDTO> findAll() {
         List<Cuenta> cuentas = cuentaRepository.findAll();
@@ -35,7 +38,7 @@ public class CuentaServicio {
     @Transactional
     public CuentaResponseDTO save(CuentaRequestDTO cuentaRequestDTO) {
         Cuenta cuenta = new Cuenta();
-        cuenta.setUsuariosPorId(cuentaRequestDTO.getUsuariosPorId());
+        cuenta.setId_usuario(cuentaRequestDTO.getId_usuario());
         cuenta.setFechaAlta(cuentaRequestDTO.getFechaAlta());
         cuenta.setSaldo(cuentaRequestDTO.getSaldo());
 
@@ -48,7 +51,7 @@ public class CuentaServicio {
                 () -> new NotFoundException("La cuenta con ID " + id + " no fue encontrada")
         );
 
-        cuenta.setUsuariosPorId(cuentaRequestDTO.getUsuariosPorId());
+        cuenta.setId_usuario(cuentaRequestDTO.getId_usuario());
         cuenta.setFechaAlta(cuentaRequestDTO.getFechaAlta());
         cuenta.setSaldo(cuentaRequestDTO.getSaldo());
 
@@ -66,9 +69,13 @@ public class CuentaServicio {
     private CuentaResponseDTO mapToCuentaResponseDTO(Cuenta cuenta) {
         CuentaResponseDTO responseDTO = new CuentaResponseDTO();
         responseDTO.setId(cuenta.getId());
-        responseDTO.setUsuariosPorId(cuenta.getUsuariosPorId());
+        responseDTO.setId_usuario(cuenta.getId_usuario());
         responseDTO.setFechaAlta(cuenta.getFechaAlta());
         responseDTO.setSaldo(cuenta.getSaldo());
         return responseDTO;
+    }
+
+    public List<CuentaResponseDTO> getCuentasPorIdUsuario(Long idUsuario) {
+        return this.usuarioFeignClient.getCuentaPorIdUsuario(idUsuario);
     }
 }

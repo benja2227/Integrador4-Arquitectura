@@ -4,7 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import org.example.microcuenta.entities.Cuenta;
+
+
 
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class Usuario {
     @NotNull
     @NotEmpty
     private String telefono;
-    private List<Cuenta> cuentasAsociadas;
+
 }
 
 

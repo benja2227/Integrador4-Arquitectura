@@ -27,8 +27,8 @@ public class Monopatin {
     private Long longitud;
     @NotNull
     @NotEmpty
-    private int tiempoEnPausa;
+    private boolean enMantenimiento;
     @NotNull
     @NotEmpty
-    private boolean enMantenimiento;
+    private int kmMantenimiento;
 }

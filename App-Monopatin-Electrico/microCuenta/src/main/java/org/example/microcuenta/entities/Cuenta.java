@@ -17,10 +17,11 @@ import java.util.List;
 
 public class Cuenta {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull
     @NotEmpty
-    private Long usuariosPorId;
+    private Long id_usuario;
     @NotNull
     @NotEmpty
     private LocalDate fechaAlta;

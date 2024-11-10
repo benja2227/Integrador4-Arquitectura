@@ -12,7 +12,9 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class CuentaResponseDTO {
 
-    private Long usuariosPorId;
+    private Long id;
+
+    private Long id_usuario;
 
     private LocalDate fechaAlta;
 

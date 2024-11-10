@@ -12,9 +12,11 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CuentaRequestDTO {
+    @NotNull(message = "El ID es obligatorio.")
+    private Long id;
 
     @NotNull(message = "El ID del usuario es obligatorio.")
-    private Long usuariosPorId;
+    private Long id_usuario;
 
     @NotNull(message = "La fecha de alta es obligatoria.")
     private LocalDate fechaAlta;

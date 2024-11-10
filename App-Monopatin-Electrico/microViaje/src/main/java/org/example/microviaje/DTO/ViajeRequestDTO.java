@@ -25,11 +25,11 @@ public class ViajeRequestDTO {
 
     @NotNull(message = "El campo usuario es obligatorio.")
     @NotEmpty(message = "El campo usuario no  puede estar vacío")
-    private Usuario usuario;
+    private Long id_usuario;
 
     @NotNull(message = "El campo monopatin es obligatorio.")
     @NotEmpty(message = "El campo monopatin no  puede estar vacío")
-    private Monopatin monopatin;
+    private Long id_monopatin;
 
     @NotNull(message = "El campo kmRecorridos es obligatorio.")
     @NotEmpty(message = "El campo kmRecorridos no  puede estar vacío")

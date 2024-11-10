@@ -32,8 +32,8 @@ public class MonopatinService{
         monopatin.setKmTotales(monopatinRequestDTO.getKmTotales());
         monopatin.setLatitud(monopatinRequestDTO.getLatitud());
         monopatin.setLongitud(monopatinRequestDTO.getLongitud());
-        monopatin.setTiempoEnPausa(monopatinRequestDTO.getTiempoEnPausa());
         monopatin.setEnMantenimiento(monopatinRequestDTO.isEnMantenimiento());
+        monopatin.setKmMantenimiento(monopatinRequestDTO.getKmMantenimiento());
 
         Monopatin newMonopatin = monopatinRepository.save(monopatin);
         return mapToMonopatinResponseDTO(newMonopatin);
@@ -53,8 +53,8 @@ public class MonopatinService{
         if (monopatinRequestDTO.getLongitud() != null) {
             monopatin.setLongitud(monopatinRequestDTO.getLongitud());
         }
-        if (monopatinRequestDTO.getTiempoEnPausa() != 0) {
-            monopatin.setTiempoEnPausa(monopatinRequestDTO.getTiempoEnPausa());
+        if (monopatinRequestDTO.getKmMantenimiento() != 0) {
+            monopatin.setKmMantenimiento(monopatinRequestDTO.getKmMantenimiento());
         }
         monopatin.setEnMantenimiento(monopatinRequestDTO.isEnMantenimiento());
 
@@ -74,8 +74,9 @@ public class MonopatinService{
         responseDTO.setKmTotales(monopatin.getKmTotales());
         responseDTO.setLatitud(monopatin.getLatitud());
         responseDTO.setLongitud(monopatin.getLongitud());
-        responseDTO.setTiempoEnPausa(monopatin.getTiempoEnPausa());
+
         responseDTO.setEnMantenimiento(monopatin.isEnMantenimiento());
+        responseDTO.setKmMantenimiento(monopatin.getKmMantenimiento());
         return responseDTO;
     }
 
@@ -98,5 +99,14 @@ public class MonopatinService{
         return result.stream()
                 .map(obj -> new ReporteTiempoSinPausaDTO((Long) obj[0], (Long) obj[1]))
                 .collect(Collectors.toList());
+    }
+
+    public void updateMantenimiento(Long id, boolean enMantenimiento) {
+        Monopatin monopatin = monopatinRepository.findById(id).orElseThrow(() -> new RuntimeException("El monopatín con ID " + id + " no fue encontrado"));
+        if(!enMantenimiento){
+            monopatin.setKmMantenimiento(0);
+        }
+        monopatin.setEnMantenimiento(enMantenimiento);
+        monopatinRepository.save(monopatin);
     }
 }

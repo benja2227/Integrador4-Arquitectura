@@ -29,11 +29,14 @@ public class Viaje {
     private LocalDateTime fin;
     @NotNull
     @NotEmpty
-    private Usuario usuario;
+    private Long id_usuario;
     @NotNull
     @NotEmpty
-    private Monopatin monopatin;
+    private Long id_monopatin;
     @NotNull
     @NotEmpty
     private int kmRecorridos;
+    @NotNull
+    @NotEmpty
+    private int tiempoEnPausa;
 }

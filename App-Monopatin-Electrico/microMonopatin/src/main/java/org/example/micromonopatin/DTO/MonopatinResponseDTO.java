@@ -1,5 +1,7 @@
 package org.example.micromonopatin.DTO;
 
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -15,4 +17,5 @@ public class MonopatinResponseDTO {
     private Long longitud;
     private int tiempoEnPausa;
     private boolean enMantenimiento;
+    private int kmMantenimiento;
 }
