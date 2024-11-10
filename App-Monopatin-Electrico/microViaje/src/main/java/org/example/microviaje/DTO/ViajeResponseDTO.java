@@ -1,39 +1,22 @@
-package org.example.microviaje.entities;
+package org.example.microviaje.DTO;
 
-import jakarta.persistence.*;
-import lombok.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.example.micromonopatin.entities.Monopatin;
 import org.example.microusuario.entities.Usuario;
 
 import java.time.LocalDateTime;
 
-@Entity
-@Getter
-@Setter
-@ToString
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-
-
-public class Viaje {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    @NotNull
-    @NotEmpty
+public class ViajeResponseDTO {
     private LocalDateTime inicio;
-    @NotNull
-    @NotEmpty
     private LocalDateTime fin;
-    @NotNull
-    @NotEmpty
     private Usuario usuario;
-    @NotNull
-    @NotEmpty
     private Monopatin monopatin;
-    @NotNull
-    @NotEmpty
     private int kmRecorridos;
 }
