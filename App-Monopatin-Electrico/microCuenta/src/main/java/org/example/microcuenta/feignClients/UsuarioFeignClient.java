@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@FeignClient(name="microusuario", url="http://localhost:8020/usuarios")
+@FeignClient(name="microusuario", url="http://localhost:8020/usuario")
 public interface UsuarioFeignClient {
 
     @GetMapping("/byCuenta/{id}")
