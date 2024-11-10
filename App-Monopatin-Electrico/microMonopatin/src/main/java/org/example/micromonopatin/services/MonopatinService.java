@@ -1,8 +1,7 @@
 package org.example.micromonopatin.services;
 
 import jakarta.transaction.Transactional;
-import org.example.micromonopatin.DTO.MonopatinRequestDTO;
-import org.example.micromonopatin.DTO.MonopatinResponseDTO;
+import org.example.micromonopatin.DTO.*;
 import org.example.micromonopatin.entities.Monopatin;
 import org.example.micromonopatin.repositories.MonopatinRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,5 +77,26 @@ public class MonopatinService{
         responseDTO.setTiempoEnPausa(monopatin.getTiempoEnPausa());
         responseDTO.setEnMantenimiento(monopatin.isEnMantenimiento());
         return responseDTO;
+    }
+
+    public List<ReporteKilometrajeDTO> obtenerReporteKilometraje() {
+        List<Object[]> result = monopatinRepository.reporteKilometraje();
+        return result.stream()
+                .map(obj -> new ReporteKilometrajeDTO((Long) obj[0], (Long) obj[1]))
+                .collect(Collectors.toList());
+    }
+
+    public List<ReporteTiempoConPausaDTO> obtenerReporteTiempoConPausas() {
+        List<Object[]> result = monopatinRepository.reporteTiempoConPausas();
+        return result.stream()
+                .map(obj -> new ReporteTiempoConPausaDTO((Long) obj[0], (Long) obj[1]))
+                .collect(Collectors.toList());
+    }
+
+    public List<ReporteTiempoSinPausaDTO> obtenerReporteTiempoSinPausas() {
+        List<Object[]> result = monopatinRepository.reporteTiempoSinPausas();
+        return result.stream()
+                .map(obj -> new ReporteTiempoSinPausaDTO((Long) obj[0], (Long) obj[1]))
+                .collect(Collectors.toList());
     }
 }

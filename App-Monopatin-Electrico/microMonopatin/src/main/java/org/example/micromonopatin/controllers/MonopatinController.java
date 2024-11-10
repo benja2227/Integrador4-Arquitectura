@@ -1,10 +1,10 @@
 package org.example.micromonopatin.controllers;
 
-import org.example.micromonopatin.DTO.MonopatinRequestDTO;
-import org.example.micromonopatin.DTO.MonopatinResponseDTO;
+import org.example.micromonopatin.DTO.*;
 import org.example.micromonopatin.services.MonopatinService;
 import org.example.micromonopatin.services.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -54,5 +54,32 @@ public class MonopatinController {
         } catch (NotFoundException e) {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/reportes/kilometraje")
+    public ResponseEntity<List<ReporteKilometrajeDTO>> obtenerReporteKilometraje() {
+        List<ReporteKilometrajeDTO> reporte = monopatinService.obtenerReporteKilometraje();
+        if (reporte.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(reporte, HttpStatus.OK);
+    }
+
+    @GetMapping("/reportes/tiempo-con-pausas")
+    public ResponseEntity<List<ReporteTiempoConPausaDTO>> obtenerReporteTiempoConPausas() {
+        List<ReporteTiempoConPausaDTO> reporte = monopatinService.obtenerReporteTiempoConPausas();
+        if (reporte.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(reporte, HttpStatus.OK);
+    }
+
+    @GetMapping("/reportes/tiempo-sin-pausas")
+    public ResponseEntity<List<ReporteTiempoSinPausaDTO>> obtenerReporteTiempoSinPausas() {
+        List<ReporteTiempoSinPausaDTO> reporte = monopatinService.obtenerReporteTiempoSinPausas();
+        if (reporte.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(reporte, HttpStatus.OK);
     }
 }

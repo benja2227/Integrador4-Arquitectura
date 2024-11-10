@@ -1,5 +1,6 @@
 package org.example.microcuenta.feignClients;
 
+import org.example.microusuario.entities.Usuario;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
