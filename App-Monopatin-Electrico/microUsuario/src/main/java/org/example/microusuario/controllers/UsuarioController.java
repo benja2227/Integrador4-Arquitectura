@@ -1,13 +1,10 @@
 package org.example.microusuario.controllers;
 
-import feign.Response;
 import org.example.microusuario.DTO.UsuarioRequestDTO;
 import org.example.microusuario.DTO.UsuarioResponseDTO;
-import org.example.microusuario.entities.Usuario;
-import org.example.microusuario.servicio.UsuarioServicio;
-import org.example.microusuario.servicio.exception.NotFoundException;
+import org.example.microusuario.services.UsuarioServicio;
+import org.example.microusuario.services.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,30 +41,22 @@ public class UsuarioController{
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Usuario> update(@PathVariable Long id, @RequestBody UsuarioRequestDTO usuarioRequestDTO){
+    public ResponseEntity<UsuarioResponseDTO> update(@PathVariable Long id, @RequestBody UsuarioRequestDTO usuarioRequestDTO){
         try{
-            return  ResponseEntity.ok(this.usuarioService.upDateUsuario(id,usuarioRequestDTO));
+            return ResponseEntity.ok( this.usuarioService.update(id, usuarioRequestDTO));
         }
         catch( NotFoundException e){
             return ResponseEntity.notFound().build();
         }
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Usuario> update(@PathVariable Long id){
-        try{
-            return  ResponseEntity.ok(this.usuarioService.delete(id));
-        }
-        catch( NotFoundException e){
-            return ResponseEntity.notFound().build();
-        }
-    }
+
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUsuarioById(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
         try {
-            this.usuarioService.getUsuarioById(id);
-            this.usuarioService.deleteUsuarioiById(id);
+            this.usuarioService.findById(id);
+            this.usuarioService.delete(id);
             return ResponseEntity.noContent().build();
         } catch (NotFoundException e) {
             return ResponseEntity.notFound().build();

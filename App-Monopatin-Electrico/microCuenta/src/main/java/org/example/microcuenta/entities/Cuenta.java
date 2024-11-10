@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
@@ -16,9 +17,10 @@ import java.time.LocalDate;
 
 public class Cuenta {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private List<Usuario> usuariosAsociados;
+    @NotNull
+    @NotEmpty
+    private Long usuariosPorId;
     @NotNull
     @NotEmpty
     private LocalDate fechaAlta;

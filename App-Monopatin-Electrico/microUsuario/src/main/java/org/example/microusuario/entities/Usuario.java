@@ -4,7 +4,9 @@ import jakarta.persistence.*;
 import lombok.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import org.example.microcuenta.entities.Cuenta;
 
+import java.util.List;
 
 
 @Entity
@@ -16,7 +18,6 @@ import jakarta.validation.constraints.NotNull;
 
 public class Usuario {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull
     @NotEmpty

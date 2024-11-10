@@ -1,4 +1,4 @@
-package org.example.microusuario.servicio.exception;
+package org.example.microestacion.services.exception;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 

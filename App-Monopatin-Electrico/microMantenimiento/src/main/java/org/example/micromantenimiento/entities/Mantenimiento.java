@@ -21,7 +21,7 @@ public class Mantenimiento {
 
     @NotNull
     @NotEmpty
-    private Monopatin monopatin;
+    private Long IDmonopatin;
     @NotNull
     @NotEmpty
     private LocalDate fechaMantenimiento;
