@@ -58,8 +58,8 @@ public class CuentaController {
         }
     }
 
-    @GetMapping("/byUsuario/{id}")
-    public ResponseEntity<List<CuentaResponseDTO>> getCuentasPorIdUsuario(@PathVariable("id") Long id){
+    @GetMapping("/cuentaPorUsuario/{idUsuario}")
+    public ResponseEntity<List<CuentaResponseDTO>> getCuentasPorIdUsuario(@PathVariable("idUsuario") Long id){
         return ResponseEntity.ok(cuentaService.getCuentasPorIdUsuario(id));
     }
 

@@ -79,6 +79,16 @@ public class ViajeService {
         viajeRepository.delete(viaje);
     }
 
+
+    public Float findPrecioById(Long idViaje){
+        Viaje viaje = viajeRepository.findById(idViaje).orElse(null);
+        Double kmRecorridos = viaje.getKmRecorridos();
+        Double tiempoEnPausa = viaje.getTiempoEnPausa();
+       if(tiempoEnPausa)
+
+    }
+
+
     //HACER DTO
     private ViajeResponseDTO mapToViajeResponseDTO(Viaje viaje) {
         ViajeResponseDTO responseDTO = new ViajeResponseDTO();

@@ -1,5 +1,6 @@
 package org.example.microusuario.controllers;
 
+import org.example.microcuenta.DTO.CuentaResponseDTO;
 import org.example.microusuario.DTO.UsuarioRequestDTO;
 import org.example.microusuario.DTO.UsuarioResponseDTO;
 import org.example.microusuario.services.UsuarioServicio;
@@ -63,5 +64,13 @@ public class UsuarioController{
         }
     }
 
-
+@GetMapping("/{idUsuario}/cuenta")
+    public ResponseEntity<List<CuentaResponseDTO>> getCuentasPorIdUsuario(@PathVariable Long idUsuario){
+       try{
+           return ResponseEntity.ok(usuarioService.getCuentasPorIdUsuario(idUsuario));
+       }
+       catch( NotFoundException e){
+           return ResponseEntity.notFound().build();
+       }
+}
 }

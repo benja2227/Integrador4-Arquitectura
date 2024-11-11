@@ -3,7 +3,8 @@ package org.example.microfacturacion.controllers;
 
 import org.example.microfacturacion.DTO.FacturacionRequestDTO;
 import org.example.microfacturacion.DTO.FacturacionResponseDTO;
-import org.example.microfacturacion.services.exceptions.NotFoundException;
+import org.example.microfacturacion.services.FacturacionService;
+import org.example.microfacturacion.services.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 public class FacturacionController {
 
     @Autowired
-    private FacturacionServicio facturacionService;
+    private FacturacionService facturacionService;
 
     @GetMapping("")
     public ResponseEntity<List<FacturacionResponseDTO>> findAll() {
@@ -55,4 +56,6 @@ public class FacturacionController {
             return ResponseEntity.notFound().build();
         }
     }
+
+
 }

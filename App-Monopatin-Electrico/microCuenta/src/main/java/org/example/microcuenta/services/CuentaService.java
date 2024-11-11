@@ -76,6 +76,8 @@ public class CuentaService {
     }
 
     public List<CuentaResponseDTO> getCuentasPorIdUsuario(Long idUsuario) {
-        return this.usuarioFeignClient.getCuentaPorIdUsuario(idUsuario);
+        List<Cuenta> cuentas = cuentaRepository.findByIdUsuario(idUsuario);
+        return cuentas.stream().map(this::mapToCuentaResponseDTO).collect(Collectors.toList());
+
     }
 }

@@ -35,8 +35,11 @@ public class Viaje {
     private Long id_monopatin;
     @NotNull
     @NotEmpty
-    private int kmRecorridos;
+    private double kmRecorridos;
     @NotNull
     @NotEmpty
-    private int tiempoEnPausa;
+    private double  tiempoEnPausa;
+    @NotNull
+    @NotEmpty
+    private double;
 }

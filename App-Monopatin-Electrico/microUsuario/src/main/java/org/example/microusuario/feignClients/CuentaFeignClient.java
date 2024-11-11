@@ -15,7 +15,7 @@ import java.util.List;
     @FeignClient(name="microcuenta", url="http://localhost:8060/cuenta")
     public interface CuentaFeignClient {
 
-        @GetMapping("/byCuenta/{id}")
+        @GetMapping("/usuario/{id}")
         List<CuentaResponseDTO> getCuentasPorIdUsuario(@PathVariable("id") Long id);
 
 

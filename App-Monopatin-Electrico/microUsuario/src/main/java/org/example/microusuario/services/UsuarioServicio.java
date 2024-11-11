@@ -2,9 +2,9 @@ package org.example.microusuario.services;
 
 import jakarta.transaction.Transactional;
 import org.example.microcuenta.DTO.CuentaResponseDTO;
-import org.example.microcuenta.feignClients.UsuarioFeignClient;
 import org.example.microusuario.DTO.UsuarioRequestDTO;
 import org.example.microusuario.DTO.UsuarioResponseDTO;
+import org.example.microusuario.feignClients.CuentaFeignClient;
 import org.example.microusuario.repositories.UsuarioRepository;
 import org.example.microusuario.entities.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +21,7 @@ public class UsuarioServicio {
     @Autowired
     private UsuarioRepository usuarioRepository;
     @Autowired
-    private UsuarioFeignClient usuarioFeignClient;
+    private CuentaFeignClient cuentaFeignClient;
     @Autowired
     private ResourceServerTokenRelayAutoConfiguration resourceServerTokenRelayAutoConfiguration;
 
@@ -118,9 +118,11 @@ public class UsuarioServicio {
         return responseDTO;
     }
 
-    public List<CuentaResponseDTO> getCuentasPorIdUsuario(Long cuentaId) {
-        return this.usuarioFeignClient.getCuentaPorIdUsuario(cuentaId);
+    public List<CuentaResponseDTO> getCuentasPorIdUsuario(Long usuarioId) {
+        return this.cuentaFeignClient.getCuentasPorIdUsuario(usuarioId);
 
     }
+
+
 }
 

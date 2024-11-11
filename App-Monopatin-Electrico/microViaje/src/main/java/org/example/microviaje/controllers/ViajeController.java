@@ -64,4 +64,17 @@ public class ViajeController {
             return ResponseEntity.notFound().build();
         }
     }
+
+
+    @GetMapping("/precio/{idviaje}")
+    public ResponseEntity<Float> findPrecioById(@PathVariable Long idviaje){
+        try{
+            return ResponseEntity.ok(this.viajeService.findPrecioById(idviaje));
+        }
+        catch( NotFoundException e){
+            return ResponseEntity.notFound().build();
+        }
+
+
+    }
 }
