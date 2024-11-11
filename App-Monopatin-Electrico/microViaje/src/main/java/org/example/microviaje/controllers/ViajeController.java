@@ -1,7 +1,6 @@
 package org.example.microviaje.controllers;
 
-import org.example.microusuario.DTO.UsuarioRequestDTO;
-import org.example.microusuario.DTO.UsuarioResponseDTO;
+
 import org.example.microusuario.services.exception.NotFoundException;
 import org.example.microviaje.DTO.ViajeRequestDTO;
 import org.example.microviaje.DTO.ViajeResponseDTO;
@@ -65,9 +64,9 @@ public class ViajeController {
         }
     }
 
-
+/*
     @GetMapping("/precio/{idviaje}")
-    public ResponseEntity<Float> findPrecioById(@PathVariable Long idviaje){
+    public ResponseEntity<Double> findPrecioById(@PathVariable Long idviaje){
         try{
             return ResponseEntity.ok(this.viajeService.findPrecioById(idviaje));
         }
@@ -76,5 +75,36 @@ public class ViajeController {
         }
 
 
+    }
+
+    @PutMapping("/precio/{idviaje}")
+    public ResponseEntity<Float> findPrecioById(@PathVariable Long idviaje){
+        try{
+            return ResponseEntity.ok(this.viajeService.updatePrecioById(idviaje));
+        }
+        catch( NotFoundException e){
+            return ResponseEntity.notFound().build();
+        }
+
+
+    }
+    @PostMapping("/precio/{idviaje}")
+    public ResponseEntity<Float> findPrecioById(@PathVariable Long idviaje){
+        try{
+            return ResponseEntity.ok(this.viajeService.savePrecioById(idviaje));
+        }
+        catch( NotFoundException e){
+            return ResponseEntity.notFound().build();
+        }
+
+
+    }
+    */
+
+
+    @PostMapping("/determinarPrecio/{idViaje}")
+    public ResponseEntity<ViajeResponseDTO> save(@PathVariable Long idviaje){
+        ViajeResponseDTO newUsuario = viajeService.updatePrecio(idviaje);
+        return ResponseEntity.ok(newUsuario);
     }
 }

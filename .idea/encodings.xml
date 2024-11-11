@@ -4,6 +4,7 @@
     <file url="file://$PROJECT_DIR$/App-Monopatin-Electrico/config-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/App-Monopatin-Electrico/eureka-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/App-Monopatin-Electrico/gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/App-Monopatin-Electrico/microAdministrador/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/App-Monopatin-Electrico/microCuenta/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/App-Monopatin-Electrico/microEstacion/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/App-Monopatin-Electrico/microFacturacion/src/main/java" charset="UTF-8" />

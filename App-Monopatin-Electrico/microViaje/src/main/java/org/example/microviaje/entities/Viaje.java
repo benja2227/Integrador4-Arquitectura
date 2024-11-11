@@ -29,17 +29,30 @@ public class Viaje {
     private LocalDateTime fin;
     @NotNull
     @NotEmpty
+    private Long latitudInicio;
+    @NotNull
+    @NotEmpty
+    private Long longitudInicio;
+    @NotNull
+    @NotEmpty
+    private Long latitudFin;
+    @NotNull
+    @NotEmpty
+    private Long longitudFin;
+    @NotNull
+    @NotEmpty
     private Long id_usuario;
     @NotNull
     @NotEmpty
     private Long id_monopatin;
     @NotNull
     @NotEmpty
-    private double kmRecorridos;
+    private LocalDateTime incioEnPausa;
     @NotNull
     @NotEmpty
-    private double  tiempoEnPausa;
+    private LocalDateTime finEnPausa;
     @NotNull
     @NotEmpty
-    private double;
+    private double precioTotal;
+
 }

@@ -14,9 +14,20 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ViajeResponseDTO {
+
+    private Long id;
     private LocalDateTime inicio;
     private LocalDateTime fin;
+    private Long latitudInicio;
+    private Long longitudInicio;
+    private Long latitudFin;
+    private Long longitudFin;
     private Long id_usuario;
     private Long id_monopatin;
-    private int kmRecorridos;
+    private LocalDateTime incioEnPausa;
+    private LocalDateTime finEnPausa;
+    private double precioTotal;
+
+
+
 }

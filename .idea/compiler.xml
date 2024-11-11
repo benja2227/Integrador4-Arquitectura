@@ -12,6 +12,7 @@
         <module name="microFacturacion" />
         <module name="microCuenta" />
         <module name="microEstacion" />
+        <module name="microAdministrador" />
         <module name="microUsuario" />
         <module name="microViaje" />
         <module name="gateway" />
@@ -24,6 +25,7 @@
       <module name="config-service" options="-parameters" />
       <module name="eureka-service" options="-parameters" />
       <module name="gateway" options="-parameters" />
+      <module name="microAdministrador" options="-parameters" />
       <module name="microCuenta" options="-parameters" />
       <module name="microEstacion" options="-parameters" />
       <module name="microFacturacion" options="-parameters" />

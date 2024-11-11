@@ -1,4 +1,4 @@
-package org.example.microcuenta.entities;
+package org.example.microadministrador.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -6,7 +6,6 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Getter
@@ -15,18 +14,18 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 
-public class Cuenta {
+public class Administrador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull
     @NotEmpty
-    private Long id_usuario;
+    private float precio;
     @NotNull
     @NotEmpty
-    private LocalDate fechaAlta;
-    private float saldo;
+    private float precioEspecial;
     @NotNull
     @NotEmpty
-    private boolean activa;
+    private LocalDate fecha;
+
 }

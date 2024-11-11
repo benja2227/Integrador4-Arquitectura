@@ -1,4 +1,4 @@
-package org.example.microcuenta.DTO;
+package org.example.microadministrador.DTO;
 
 
 import lombok.AllArgsConstructor;
@@ -10,14 +10,15 @@ import java.time.LocalDate;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CuentaResponseDTO {
+public class AdministradorResponseDTO {
 
     private Long id;
 
-    private Long id_usuario;
+    private float precio;
 
-    private LocalDate fechaAlta;
+    private float precioEspecial;
 
-    private float saldo;
-    private boolean activa;
+    private LocalDate fecha;
+
+
 }

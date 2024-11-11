@@ -10,7 +10,9 @@ import org.example.microcuenta.feignClients.UsuarioFeignClient;
 import org.example.microcuenta.repositories.CuentaRepository;
 import org.example.microcuenta.services.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -80,4 +82,17 @@ public class CuentaService {
         return cuentas.stream().map(this::mapToCuentaResponseDTO).collect(Collectors.toList());
 
     }
+
+
+    public CuentaResponseDTO updateEstadoCuenta(Long id, Boolean activa){
+        Cuenta cuenta = cuentaRepository.findById(id).orElseThrow(
+                () -> new NotFoundException("La cuenta con ID " + id + " no fue encontrada")
+        );
+
+        cuenta.setActiva(activa);
+        cuentaRepository.save(cuenta);
+        return mapToCuentaResponseDTO(cuenta);
+    }
+
+
 }

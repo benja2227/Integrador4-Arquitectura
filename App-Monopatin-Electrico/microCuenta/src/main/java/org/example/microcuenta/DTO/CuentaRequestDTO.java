@@ -22,4 +22,6 @@ public class CuentaRequestDTO {
     private LocalDate fechaAlta;
 
     private float saldo;
+
+    private boolean activa;
 }

@@ -6,6 +6,7 @@
       <list>
         <option value="$PROJECT_DIR$/App-Monopatin-Electrico/pom.xml" />
         <option value="$PROJECT_DIR$/App-Monopatin-Electrico/microEstacion/pom.xml" />
+        <option value="$PROJECT_DIR$/App-Monopatin-Electrico/microAdministrador/pom.xml" />
       </list>
     </option>
   </component>
