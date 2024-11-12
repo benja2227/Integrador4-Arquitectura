@@ -71,5 +71,10 @@ public class CuentaController {
         }
     }
 
+    @PutMapping("/anular/{id}")
+    public ResponseEntity<Void> anularCuenta(@PathVariable Long id) {
+        cuentaService.anularCuenta(id);
+        return ResponseEntity.noContent().build();
+    }
 
 }

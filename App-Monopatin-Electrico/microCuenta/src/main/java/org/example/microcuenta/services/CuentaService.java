@@ -94,5 +94,10 @@ public class CuentaService {
         return mapToCuentaResponseDTO(cuenta);
     }
 
-
+    public void anularCuenta(Long id) {
+        Cuenta cuenta = cuentaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cuenta no encontrada"));
+        cuenta.setActiva(false);
+        cuentaRepository.save(cuenta);
+    }
 }

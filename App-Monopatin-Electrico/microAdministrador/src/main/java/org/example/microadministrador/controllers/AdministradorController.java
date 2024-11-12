@@ -70,4 +70,12 @@ public class AdministradorController {
         return ResponseEntity.ok(administradorService.getTarifaEspecial(fecha));
     }
 
+
+    @PutMapping("/anular-cuenta/{id}")
+    public ResponseEntity<Void> anularCuenta(@PathVariable Long id) {
+        administradorService.anularCuenta(id);
+        return ResponseEntity.noContent().build();
+    }
+
+
 }
