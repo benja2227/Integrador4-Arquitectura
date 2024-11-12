@@ -10,9 +10,8 @@ import org.example.microadministrador.repositories.AdministradorRepository;
 import org.example.microadministrador.services.exception.FechaNulaException;
 import org.example.microadministrador.services.exception.NotFoundException;
 import org.example.microadministrador.services.exception.TarifaNoEncontradaException;
-import org.example.microusuario.feignClients.CuentaFeignClient;
+import org.example.microadministrador.feignClients.CuentaFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -25,7 +24,8 @@ public class AdministradorService {
 
     @Autowired
     private AdministradorRepository administradorRepository;
-    @Qualifier("cuentaFeignClient")
+
+    @Autowired
     private CuentaFeignClient cuentaFeignClient;
 
     public List<AdministradorResponseDTO> findAll() {
@@ -104,6 +104,15 @@ public class AdministradorService {
 
         return actualizacion.getPrecioEspecial();
     }
+
+
+
+        public void updateEstadoCuenta(Long cuentaId, boolean estado) {
+            cuentaFeignClient.updateEstadoCuenta(cuentaId,estado);
+        }
+
+
+
     private AdministradorResponseDTO mapToAdministradorResponseDTO(Administrador administrador) {
         AdministradorResponseDTO responseDTO = new AdministradorResponseDTO();
         responseDTO.setId(administrador.getId());
@@ -112,10 +121,5 @@ public class AdministradorService {
         responseDTO.setFecha(administrador.getFecha());
         return responseDTO;
     }
-
-
-        public void anularCuenta(Long cuentaId) {
-            cuentaFeignClient.anularCuenta(cuentaId);
-        }
     }
 

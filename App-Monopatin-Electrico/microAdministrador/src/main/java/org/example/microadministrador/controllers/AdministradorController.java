@@ -4,6 +4,7 @@ package org.example.microadministrador.controllers;
 import org.example.microadministrador.DTO.AdministradorResponseDTO;
 import org.example.microadministrador.DTO.AdministradorRequestDTO;
 import org.example.microadministrador.services.AdministradorService;
+import org.example.microcuenta.DTO.CuentaResponseDTO;
 import org.example.microcuenta.services.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -71,9 +72,9 @@ public class AdministradorController {
     }
 
 
-    @PutMapping("/anular-cuenta/{id}")
-    public ResponseEntity<Void> anularCuenta(@PathVariable Long id) {
-        administradorService.anularCuenta(id);
+    @PutMapping("/idcuenta/{id}/estado/{boolean}")
+    public ResponseEntity<Void> updateEstadoCuenta(@PathVariable Long id, @PathVariable boolean estado) {
+        administradorService.updateEstadoCuenta(id,estado);
         return ResponseEntity.noContent().build();
     }
 

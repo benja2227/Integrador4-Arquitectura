@@ -11,8 +11,8 @@ import java.util.List;
 
 @FeignClient(name="microcuenta", url="http://localhost:8060/cuenta")
 public interface CuentaFeignClient {
-    @PutMapping("/anular/{id}")
-    ResponseEntity<Void> anularCuenta(@PathVariable("id") Long id);
+    @PutMapping("/id/{id}/activa/{estado}")
+    ResponseEntity<Void> updateEstadoCuenta(@PathVariable("id") Long id, @PathVariable("estado") boolean estado);
 }
 
 

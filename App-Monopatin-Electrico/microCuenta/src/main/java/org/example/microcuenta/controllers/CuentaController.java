@@ -62,8 +62,8 @@ public class CuentaController {
     public ResponseEntity<List<CuentaResponseDTO>> getCuentasPorIdUsuario(@PathVariable("idUsuario") Long id){
         return ResponseEntity.ok(cuentaService.getCuentasPorIdUsuario(id));
     }
-    @PutMapping("/id/{id}/activa/{boolean}")
-    public ResponseEntity<CuentaResponseDTO> updateEstadoCuenta(@PathVariable Long id, @PathVariable boolean activa) {
+    @PutMapping("/id/{id}/activa/{estado}")
+    public ResponseEntity<CuentaResponseDTO> updateEstadoCuenta(@PathVariable("id") Long id, @PathVariable("estado") boolean activa) {
         try {
             return ResponseEntity.ok(cuentaService.updateEstadoCuenta(id, activa));
         } catch (NotFoundException e) {
@@ -71,10 +71,6 @@ public class CuentaController {
         }
     }
 
-    @PutMapping("/anular/{id}")
-    public ResponseEntity<Void> anularCuenta(@PathVariable Long id) {
-        cuentaService.anularCuenta(id);
-        return ResponseEntity.noContent().build();
-    }
+
 
 }

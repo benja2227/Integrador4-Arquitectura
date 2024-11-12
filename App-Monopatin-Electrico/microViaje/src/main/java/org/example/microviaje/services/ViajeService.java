@@ -156,7 +156,6 @@ public class ViajeService {
 
     }
 
-
     private Float calcularDistanciaKilometros(Long lat1, Long lon1, Long lat2, Long lon2) {
 
        /*
