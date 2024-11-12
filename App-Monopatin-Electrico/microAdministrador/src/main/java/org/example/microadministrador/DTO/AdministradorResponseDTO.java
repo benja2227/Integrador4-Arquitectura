@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -18,7 +19,7 @@ public class AdministradorResponseDTO {
 
     private float precioEspecial;
 
-    private LocalDate fecha;
+    private LocalDateTime fecha;
 
 
 }

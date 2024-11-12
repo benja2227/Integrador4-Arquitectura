@@ -26,7 +26,7 @@ public class ViajeResponseDTO {
     private Long id_monopatin;
     private LocalDateTime incioEnPausa;
     private LocalDateTime finEnPausa;
-    private double precioTotal;
+    private Float precioTotal;
 
 
 

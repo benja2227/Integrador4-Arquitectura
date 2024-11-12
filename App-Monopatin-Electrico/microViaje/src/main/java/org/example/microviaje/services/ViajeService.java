@@ -11,6 +11,7 @@ import org.example.micromonopatin.repositories.MonopatinRepository;
 import org.example.microviaje.DTO.ViajeRequestDTO;
 import org.example.microviaje.DTO.ViajeResponseDTO;
 import org.example.microviaje.entities.Viaje;
+import org.example.microviaje.feignClients.AdministradorFeignClient;
 import org.example.microviaje.repositories.ViajeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -26,9 +27,10 @@ public class ViajeService {
 
     @Autowired
     private ViajeRepository viajeRepository;
-    @Qualifier("feignClient")
+
     @Autowired
-    private Client feignClient;
+    private AdministradorFeignClient administradorfeignClient;
+
 
     public List<ViajeResponseDTO> findAll() {
         List<Viaje> viajes = viajeRepository.findAll();
@@ -47,15 +49,13 @@ public class ViajeService {
         viaje.setFin(viajeRequestDTO.getFin());
         viaje.setId_usuario(viajeRequestDTO.getId_usuario());
         viaje.setId_monopatin(viajeRequestDTO.getId_monopatin());
-        viaje.setPrecioTotal(0);
+        viaje.setPrecioTotal(0F);
         viaje.setIncioEnPausa(viajeRequestDTO.getIncioEnPausa());
         viaje.setFinEnPausa(viajeRequestDTO.getFinEnPausa());
         viaje.setLatitudFin(viajeRequestDTO.getLatitudFin());
         viaje.setLongitudFin(viajeRequestDTO.getLongitudFin());
         viaje.setLatitudInicio(viajeRequestDTO.getLatitudInicio());
         viaje.setLongitudInicio(viajeRequestDTO.getLongitudInicio());
-
-
 
 
         Viaje newViaje = viajeRepository.save(viaje);
@@ -79,8 +79,8 @@ public class ViajeService {
         if (viajeRequestDTO.getId_monopatin() != null) {
             viaje.setId_monopatin(viajeRequestDTO.getId_monopatin());
         }
-        if (viajeRequestDTO.getId_monopatin() != null) {
-          viaje.setPrecioTotal(viajeRequestDTO.getPrecioTotal());
+        if (viajeRequestDTO.getPrecioTotal() != null) {
+            viaje.setPrecioTotal(viajeRequestDTO.getPrecioTotal());
         }
 
         if (viajeRequestDTO.getIncioEnPausa() != null) {
@@ -114,14 +114,14 @@ public class ViajeService {
         viajeRepository.delete(viaje);
     }
 
-/*
-    public Double findPrecioById(Long id) {
-        Viaje viaje = viajeRepository.findById(id).orElse(null);
-        return viaje.getPrecioTotal();
-    }
+    /*
+        public Double findPrecioById(Long id) {
+            Viaje viaje = viajeRepository.findById(id).orElse(null);
+            return viaje.getPrecioTotal();
+        }
 
 
-*/
+    */
 
     public ViajeResponseDTO updatePrecio(Long id) {
         Viaje viaje = viajeRepository.findById(id).orElseThrow(
@@ -137,43 +137,60 @@ public class ViajeService {
         long minutosViaje = duracionViaje.toMinutes();
 
 
-        //DISTANCIA RECORRIDA
-        double distanciaRecorrida = calcularDistanciaKilometros(
+
+
+        Float tarifa;
+
+        if (minutosPausa >= 15) {
+            tarifa = administradorfeignClient.getTarifaEspecial(viaje.getFin());
+
+
+        } else {
+            tarifa = administradorfeignClient.getTarifaComun(viaje.getFin());
+
+        }
+        Float precioActualizado = minutosViaje * tarifa;
+        viaje.setPrecioTotal(precioActualizado);
+        viajeRepository.save(viaje);
+        return this.mapToViajeResponseDTO(viaje);
+
+    }
+
+
+    private Float calcularDistanciaKilometros(Long lat1, Long lon1, Long lat2, Long lon2) {
+
+       /*
+       *   //DISTANCIA RECORRIDA
+        Float distanciaRecorrida = calcularDistanciaKilometros(
                 viaje.getLatitudInicio(), viaje.getLongitudInicio(),
                 viaje.getLatitudFin(), viaje.getLongitudFin()
         );
-Float tarifa;
-if(minutosPausa>=15){
- tarifa = feignClient.getPrecioEspecial();
+       *
 
-
-}
-else{
-    tarifa = feignClient.getPrecioNormal();
-
-}
-        Float precioActualizado = distanciaRecorrida*tarifal;
-        viaje.setPrecioTotal(precioActualizado);
-        viajeRepository.save(viaje);
-        return  this.mapToViajeResponseDTO(viaje);
-
-    }
+       * */
 
 
 
-    private double calcularDistanciaKilometros(double lat1, double lon1, double lat2, double lon2) {
-        final int RADIO_TIERRA = 6371; // Radio de la Tierra en km
-        double latDistancia = Math.toRadians(lat2 - lat1);
-        double lonDistancia = Math.toRadians(lon2 - lon1);
+
+
+
+        final int RADIO_TIERRA = 6371;
+
+        double lat1Double = lat1.doubleValue();
+        double lon1Double = lon1.doubleValue();
+        double lat2Double = lat2.doubleValue();
+        double lon2Double = lon2.doubleValue();
+
+        double latDistancia = Math.toRadians(lat2Double - lat1Double);
+        double lonDistancia = Math.toRadians(lon2Double - lon1Double);
         double a = Math.sin(latDistancia / 2) * Math.sin(latDistancia / 2)
-                + Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2))
+                + Math.cos(Math.toRadians(lat1Double)) * Math.cos(Math.toRadians(lat2Double))
                 * Math.sin(lonDistancia / 2) * Math.sin(lonDistancia / 2);
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-        return RADIO_TIERRA * c;
+
+
+        return (float) (RADIO_TIERRA * c);
     }
-
-
-
 
 
     private ViajeResponseDTO mapToViajeResponseDTO(Viaje viaje) {

@@ -65,7 +65,7 @@ public class ViajeRequestDTO {
 
     @NotNull(message = "El campo precioTotal es obligatorio.")
     @NotEmpty(message = "El campo precioTotal no  puede estar vacío")
-    private double precioTotal;
+    private Float precioTotal;
 
 
 

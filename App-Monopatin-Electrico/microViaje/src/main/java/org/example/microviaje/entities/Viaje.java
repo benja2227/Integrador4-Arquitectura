@@ -53,6 +53,6 @@ public class Viaje {
     private LocalDateTime finEnPausa;
     @NotNull
     @NotEmpty
-    private double precioTotal;
+    private Float precioTotal;
 
 }

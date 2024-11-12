@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -22,6 +23,6 @@ public class AdministradorRequestDTO {
     private float precioEspecial;
 
     @NotNull(message = "La fecha es obligatoria.")
-    private LocalDate fecha;
+    private LocalDateTime fecha;
 
 }

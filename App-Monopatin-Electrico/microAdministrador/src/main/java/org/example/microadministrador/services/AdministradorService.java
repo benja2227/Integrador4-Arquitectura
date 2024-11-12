@@ -7,11 +7,16 @@ import org.example.microadministrador.DTO.AdministradorResponseDTO;
 import org.example.microadministrador.DTO.AdministradorRequestDTO;
 import org.example.microadministrador.entities.Administrador;
 import org.example.microadministrador.repositories.AdministradorRepository;
+import org.example.microadministrador.services.exception.FechaNulaException;
 import org.example.microadministrador.services.exception.NotFoundException;
+import org.example.microadministrador.services.exception.TarifaNoEncontradaException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 
 @Service
@@ -64,6 +69,38 @@ public class AdministradorService {
         administradorRepository.delete(cuenta);
     }
 
+
+    public float getTarifaComun(LocalDateTime fecha){
+
+        if (fecha == null) {
+            throw new FechaNulaException();
+        }
+
+        Administrador actualizacion = administradorRepository
+                .findTopByFechaLessThanEqualOrderByFechaDesc(fecha);
+
+        if (actualizacion == null) {
+            throw new TarifaNoEncontradaException();
+        }
+
+        return actualizacion.getPrecio();
+    }
+
+    public float getTarifaEspecial(LocalDateTime fecha){
+
+        if (fecha == null) {
+            throw new FechaNulaException();
+        }
+
+        Administrador actualizacion = administradorRepository
+                .findTopByFechaLessThanEqualOrderByFechaDesc(fecha);
+
+        if (actualizacion == null) {
+            throw new TarifaNoEncontradaException();
+        }
+
+        return actualizacion.getPrecioEspecial();
+    }
     private AdministradorResponseDTO mapToAdministradorResponseDTO(Administrador administrador) {
         AdministradorResponseDTO responseDTO = new AdministradorResponseDTO();
         responseDTO.setId(administrador.getId());

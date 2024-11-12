@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -26,6 +27,6 @@ public class Administrador {
     private float precioEspecial;
     @NotNull
     @NotEmpty
-    private LocalDate fecha;
+    private LocalDateTime fecha;
 
 }

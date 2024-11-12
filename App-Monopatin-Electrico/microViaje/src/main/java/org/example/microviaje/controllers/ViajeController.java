@@ -103,7 +103,7 @@ public class ViajeController {
 
 
     @PostMapping("/determinarPrecio/{idViaje}")
-    public ResponseEntity<ViajeResponseDTO> save(@PathVariable Long idviaje){
+    public ResponseEntity<ViajeResponseDTO> updatePrecio(@PathVariable Long idviaje){
         ViajeResponseDTO newUsuario = viajeService.updatePrecio(idviaje);
         return ResponseEntity.ok(newUsuario);
     }

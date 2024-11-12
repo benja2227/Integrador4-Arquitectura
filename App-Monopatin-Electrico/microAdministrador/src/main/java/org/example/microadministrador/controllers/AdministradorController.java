@@ -9,10 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-        import java.util.List;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.List;
 
 @RestController
-@RequestMapping("/Administrador")
+@RequestMapping("/administrador")
 public class AdministradorController {
 
     @Autowired
@@ -56,4 +58,16 @@ public class AdministradorController {
             return ResponseEntity.notFound().build();
         }
     }
+
+
+    @GetMapping("tarifaComunParaFecha/{fecha}")
+    public ResponseEntity<Float> getTarifaComun(@PathVariable LocalDateTime fecha) {
+        return ResponseEntity.ok(administradorService.getTarifaComun(fecha));
+    }
+
+    @GetMapping("tarifaEspecialParaFecha/{fecha}")
+    public ResponseEntity<Float> getTarifaEspecial(@PathVariable LocalDateTime fecha){
+        return ResponseEntity.ok(administradorService.getTarifaEspecial(fecha));
+    }
+
 }
