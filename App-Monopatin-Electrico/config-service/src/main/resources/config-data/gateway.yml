@@ -15,34 +15,38 @@ spring:
     gateway:
       mvc:
         routes:
-          - id: microCuenta
+          - id: microcuenta
             uri: lb://microcuenta
             predicates:
-              - Path=/api/cuentas/**
-          - id: microEstacion
+              - Path=/cuenta/**
+          - id: microestacion
             uri: lb://microestacion
             predicates:
-              - Path=/api/estaciones/**
-          - id: microFacturacion
+              - Path=/estacion/**
+          - id: microfacturacion
             uri: lb://microfacturacion
             predicates:
-              - Path=/api/facturaciones/**
-          - id: microMantenimiento
+              - Path=/facturacion/**
+          - id: micromantenimiento
             uri: lb://micromantenimiento
             predicates:
-              - Path=/api/mantenimientos/**
-          - id: microMonopatin
+              - Path=/mantenimiento/**
+          - id: micromonopatin
             uri: lb://micromonopatin
             predicates:
-              - Path=/api/monopatines/**
-          - id: microUsuario
+              - Path=/monopatin/**
+          - id: microusuario
             uri: lb://microusuario
             predicates:
-              - Path=/api/usuarios/**
-          - id: microViaje
+              - Path=/usuario/**
+          - id: microviaje
             uri: lb://microviaje
             predicates:
-              - Path=/api/viajes/**
+              - Path=/viaje/**
+          - id: microadministrador
+            uri: lb://microadministrador
+            predicates:
+             - Path=/administrador/**
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG

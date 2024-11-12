@@ -1,5 +1,5 @@
 spring:
   application:
-    name: microAdministrador
+    name: microadministrador
 config:
   import: optional:configserver:http://localhost:8081

@@ -5,6 +5,7 @@ import jakarta.transaction.Transactional;
 import org.example.micromantenimiento.DTO.MantenimientoRequestDTO;
 import org.example.micromantenimiento.DTO.MantenimientoResponseDTO;
 import org.example.micromantenimiento.entities.Mantenimiento;
+import org.example.micromantenimiento.repositories.MantenimientoRepository;
 import org.example.micromantenimiento.services.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class MantenimientoServicio {
+public class MantenimientoService{
 
     @Autowired
     private MantenimientoRepository mantenimientoRepository;

@@ -1,0 +1,5 @@
+spring:
+    application:
+        name: micromantenimiento
+    config:
+        import: optional:configserver:http://localhost:8081

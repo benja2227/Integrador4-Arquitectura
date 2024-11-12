@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.List;
 
     @FeignClient(name="microcuenta", url="http://localhost:8060/cuenta")
-    public interface CuentaFeignClientUsuario {
+    public interface CuentaFeignClient {
 
         @GetMapping("/cuentaPorUsuario/{idUsuario}")
         List<CuentaResponseDTO> getCuentasPorIdUsuario(@PathVariable("id") Long id);

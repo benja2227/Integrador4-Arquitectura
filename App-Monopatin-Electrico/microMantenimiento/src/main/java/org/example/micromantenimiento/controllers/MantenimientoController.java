@@ -2,7 +2,8 @@ package org.example.micromantenimiento.controllers;
 
 import org.example.micromantenimiento.DTO.MantenimientoRequestDTO;
 import org.example.micromantenimiento.DTO.MantenimientoResponseDTO;
-import org.example.micromantenimiento.services.MantenimientoServicio;
+import org.example.micromantenimiento.services.MantenimientoService;
+
 import org.example.micromantenimiento.services.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,7 @@ import java.util.List;
 public class MantenimientoController {
 
     @Autowired
-    private MantenimientoServicio mantenimientoService;
+    private MantenimientoService mantenimientoService;
 
 
 
