@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class EstacionServicio {
+public class EstacionService {
 
     @Autowired
     private EstacionRepository estacionRepository;

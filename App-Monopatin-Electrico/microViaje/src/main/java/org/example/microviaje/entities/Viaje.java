@@ -4,8 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
-import org.example.micromonopatin.entities.Monopatin;
-import org.example.microusuario.entities.Usuario;
+
 
 import java.time.LocalDateTime;
 

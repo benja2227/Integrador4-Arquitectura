@@ -3,7 +3,6 @@ package org.example.microcuenta.controllers;
 
 import org.example.microcuenta.DTO.CuentaRequestDTO;
 import org.example.microcuenta.DTO.CuentaResponseDTO;
-import org.example.microcuenta.entities.Cuenta;
 import org.example.microcuenta.services.CuentaService;
 import org.example.microcuenta.services.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;

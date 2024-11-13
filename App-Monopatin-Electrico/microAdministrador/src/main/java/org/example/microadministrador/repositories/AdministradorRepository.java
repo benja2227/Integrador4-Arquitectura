@@ -14,8 +14,6 @@ import java.util.Optional;
 @Repository
 public interface AdministradorRepository extends JpaRepository<Administrador, Long> {
 
-        public List<Administrador> findByIdUsuario(Long usuariosPorId);
-
 
 
         @Query("SELECT a FROM Administrador a WHERE a.fecha <= :fecha ORDER BY a.fecha DESC")

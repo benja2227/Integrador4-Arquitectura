@@ -9,7 +9,7 @@ import java.util.List;
 @FeignClient(name = "micromantenimiento", url = "http://localhost:8020/mantenimiento")
 public interface MantenimientoFeignClient {
 
-    @GetMapping("/byCuenta/{id}")
-    List<Usuario> getUsuariosPorId(@PathVariable("id") Long id);
+ //   @GetMapping("/byCuenta/{id}")
+  //  List<Usuario> getUsuariosPorId(@PathVariable("id") Long id);
 
 }

@@ -6,7 +6,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.3.5</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>org.example</groupId>
     <artifactId>App-Monopatin-Electrico</artifactId>
@@ -25,9 +25,8 @@
         <module>microCuenta</module>
         <module>microEstacion</module>
         <module>microAdministrador</module>
-        <module>config-service</module>
         <module>gateway</module>
-        <module>eureka-service</module>
+
 
     </modules>
 

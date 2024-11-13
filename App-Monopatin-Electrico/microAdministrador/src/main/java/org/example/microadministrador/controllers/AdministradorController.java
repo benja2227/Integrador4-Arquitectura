@@ -4,8 +4,8 @@ package org.example.microadministrador.controllers;
 import org.example.microadministrador.DTO.AdministradorResponseDTO;
 import org.example.microadministrador.DTO.AdministradorRequestDTO;
 import org.example.microadministrador.services.AdministradorService;
-import org.example.microcuenta.DTO.CuentaResponseDTO;
-import org.example.microcuenta.services.exception.NotFoundException;
+
+import org.example.microadministrador.services.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

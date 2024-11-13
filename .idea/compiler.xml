@@ -7,8 +7,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="eureka-service" />
-        <module name="config-service" />
         <module name="microMonopatin" />
         <module name="microFacturacion" />
         <module name="microCuenta" />
@@ -20,6 +18,10 @@
         <module name="microMantenimiento" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="config-service" target="17" />
+      <module name="eureka-service" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

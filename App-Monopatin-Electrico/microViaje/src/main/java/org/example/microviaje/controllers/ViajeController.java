@@ -1,10 +1,11 @@
 package org.example.microviaje.controllers;
 
 
-import org.example.microusuario.services.exception.NotFoundException;
+
 import org.example.microviaje.DTO.ViajeRequestDTO;
 import org.example.microviaje.DTO.ViajeResponseDTO;
 import org.example.microviaje.services.ViajeService;
+import org.example.microviaje.services.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

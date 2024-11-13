@@ -3,7 +3,8 @@ package org.example.microestacion.controllers;
 
 import org.example.microestacion.DTO.EstacionRequestDTO;
 import org.example.microestacion.DTO.EstacionResponseDTO;
-import org.example.microestacion.services.EstacionServicio;
+import org.example.microestacion.services.EstacionService;
+
 import org.example.microestacion.services.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class EstacionController {
 
     @Autowired
-    private EstacionServicio estacionService;
+    private EstacionService estacionService;
 
     @GetMapping("")
     public ResponseEntity<List<EstacionResponseDTO>> findAll() {

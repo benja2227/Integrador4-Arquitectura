@@ -1,12 +1,9 @@
 package org.example.microviaje.DTO;
 
-import jakarta.validation.constraints.NotEmpty;
-import jakarta.validation.constraints.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.example.micromonopatin.entities.Monopatin;
-import org.example.microusuario.entities.Usuario;
 
 import java.time.LocalDateTime;
 

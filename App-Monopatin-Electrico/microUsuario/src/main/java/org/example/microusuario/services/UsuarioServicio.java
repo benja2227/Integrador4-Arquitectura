@@ -1,7 +1,7 @@
 package org.example.microusuario.services;
 
 import jakarta.transaction.Transactional;
-import org.example.microcuenta.DTO.CuentaResponseDTO;
+//import org.example.microcuenta.DTO.CuentaResponseDTO;
 import org.example.microusuario.DTO.UsuarioRequestDTO;
 import org.example.microusuario.DTO.UsuarioResponseDTO;
 import org.example.microusuario.feignClients.CuentaFeignClient;
@@ -118,11 +118,11 @@ public class UsuarioServicio {
         return responseDTO;
     }
 
-    public List<CuentaResponseDTO> getCuentasPorIdUsuario(Long usuarioId) {
+  /*  public List<CuentaResponseDTO> getCuentasPorIdUsuario(Long usuarioId) {
         return this.cuentaFeignClient.getCuentasPorIdUsuario(usuarioId);
 
     }
-
+*/
 
 }
 
