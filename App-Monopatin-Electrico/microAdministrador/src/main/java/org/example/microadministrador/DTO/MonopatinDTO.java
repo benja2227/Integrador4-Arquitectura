@@ -1,4 +1,4 @@
-package org.example.micromonopatin.DTO;
+package org.example.microadministrador.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,13 +8,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class MonopatinResponseDTO {
-
+public class MonopatinDTO {
+    private Long id;
     private int kmTotales;
     private Long latitud;
     private Long longitud;
     private boolean enMantenimiento;
-    private int kmParaMantenimiento;
+    private Long kmParaMantenimiento;
     private int tiempoDeUso;
     private int tiempoEnPausa;
 }

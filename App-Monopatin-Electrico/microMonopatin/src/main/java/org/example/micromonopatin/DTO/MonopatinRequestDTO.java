@@ -23,15 +23,20 @@ public class MonopatinRequestDTO {
     @NotEmpty(message = "El campo longitud no  puede estar vacío")
     private Long longitud;
 
-    @NotNull(message = "El campo tiempoEnPausa es obligatorio.")
-    @NotEmpty(message = "El campo tiempoEnPausa no  puede estar vacío")
-    private int tiempoEnPausa;
-
     @NotNull(message = "El campo enMantenimiento es obligatorio.")
     private boolean enMantenimiento;
 
     @NotNull(message = "El campo kmMantenimiento es obligatorio.")
     @NotEmpty(message = "El campo kmMantenimiento no  puede estar vacío")
-    private int kmMantenimiento;
+    private int kmParaMantenimiento;
+
+    @NotNull(message = "El campo tiempoEnPausa es obligatorio.")
+    @NotEmpty(message = "El campo tiempoEnPausa no  puede estar vacío")
+    private int tiempoDeUso;
+
+    @NotNull(message = "El campo tiempoEnPausa es obligatorio.")
+    @NotEmpty(message = "El campo tiempoEnPausa no  puede estar vacío")
+    private int tiempoEnPausa;
+
 
 }

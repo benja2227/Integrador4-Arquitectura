@@ -20,6 +20,7 @@ public class AdministradorResponseDTO {
     private float precioEspecial;
 
     private LocalDateTime fecha;
+    private Integer topeKm;
 
 
 }

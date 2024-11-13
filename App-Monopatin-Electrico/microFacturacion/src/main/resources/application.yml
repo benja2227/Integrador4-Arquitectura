@@ -14,7 +14,3 @@ spring:
         database: mysql
     instance:
         instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
-    sql:
-        init:
-            mode: always
-            data-locations: classpath:data.sql

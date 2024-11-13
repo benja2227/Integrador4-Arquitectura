@@ -3,9 +3,9 @@ package org.example.microadministrador.services;
 
 
 import jakarta.transaction.Transactional;
-import org.example.microadministrador.DTO.AdministradorResponseDTO;
-import org.example.microadministrador.DTO.AdministradorRequestDTO;
+import org.example.microadministrador.DTO.*;
 import org.example.microadministrador.entities.Administrador;
+import org.example.microadministrador.feignClients.MonopatinFeignClient;
 import org.example.microadministrador.repositories.AdministradorRepository;
 import org.example.microadministrador.services.exception.FechaNulaException;
 import org.example.microadministrador.services.exception.NotFoundException;
@@ -19,11 +19,16 @@ import java.util.List;
 
 import java.util.stream.Collectors;
 
+import static java.util.stream.Nodes.collect;
+
 @Service
 public class AdministradorService {
 
     @Autowired
     private AdministradorRepository administradorRepository;
+
+    @Autowired
+    private MonopatinFeignClient monopatinFeignClient;
 
     @Autowired
     private CuentaFeignClient cuentaFeignClient;
@@ -47,6 +52,7 @@ public class AdministradorService {
         administrador.setPrecio(administradorRequestDTO.getPrecio());
         administrador.setPrecioEspecial(administradorRequestDTO.getPrecioEspecial());
         administrador.setFecha(administradorRequestDTO.getFecha());
+        administrador.setTopeKm(administradorRequestDTO.getTopeKm());
 
         Administrador newAdministrador = administradorRepository.save(administrador);
         return mapToAdministradorResponseDTO(newAdministrador);
@@ -60,6 +66,7 @@ public class AdministradorService {
         administrador.setPrecio(administradorRequestDTO.getPrecio());
         administrador.setPrecioEspecial(administradorRequestDTO.getPrecioEspecial());
         administrador.setFecha(administradorRequestDTO.getFecha());
+        administrador.setTopeKm(administradorRequestDTO.getTopeKm());
 
         Administrador updateAdministrador = administradorRepository.save(administrador);
         return mapToAdministradorResponseDTO(updateAdministrador);
@@ -107,9 +114,9 @@ public class AdministradorService {
 
 
 
-        public void updateEstadoCuenta(Long cuentaId, boolean estado) {
-            cuentaFeignClient.updateEstadoCuenta(cuentaId,estado);
-        }
+    public void updateEstadoCuenta(Long cuentaId, boolean estado) {
+        cuentaFeignClient.updateEstadoCuenta(cuentaId,estado);
+    }
 
 
 
@@ -119,7 +126,43 @@ public class AdministradorService {
         responseDTO.setPrecio(administrador.getPrecio());
         responseDTO.setPrecioEspecial(administrador.getPrecioEspecial());
         responseDTO.setFecha(administrador.getFecha());
+        responseDTO.setTopeKm(administrador.getTopeKm());
         return responseDTO;
     }
+
+
+
+    public List<ReporteMonopatinMantDTO> generarReporteA(final Boolean includePausa) {
+
+        Integer topeKm = this.administradorRepository.getTopeKm();
+        List<MonopatinDTO> monopatines = monopatinFeignClient.findAll();
+
+        return monopatines.stream().map(monopatin -> {
+
+            boolean necesitaMantenimiento = monopatin.getKmParaMantenimiento() >= topeKm;
+
+            if (includePausa) {
+                return new ReporteMonopatinMantenimientoConPausaDTO(
+                        monopatin.getId(),
+                        monopatin.getKmParaMantenimiento(),
+                        topeKm,
+                        necesitaMantenimiento,
+                        monopatin.getTiempoEnPausa()
+                );
+            } else {
+                return new ReporteMonopatinMantenimientoDTO(
+                        monopatin.getId(),
+                        monopatin.getKmParaMantenimiento(),
+                        topeKm,
+                        necesitaMantenimiento
+                );
+            }
+
+        }).collect(Collectors.toList());
     }
 
+        public Object generarReporteC(int cantViajes, int anio) {
+
+            return null;
+        }
+    }

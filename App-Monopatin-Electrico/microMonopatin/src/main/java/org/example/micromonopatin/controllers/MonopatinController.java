@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-        import java.util.List;
+import java.util.List;
 
 @RestController
 @RequestMapping("/monopatin")
@@ -66,8 +66,8 @@ public class MonopatinController {
     }
 
     @GetMapping("/reportes/tiempo-con-pausas")
-    public ResponseEntity<List<ReporteTiempoConPausaDTO>> obtenerReporteTiempoConPausas() {
-        List<ReporteTiempoConPausaDTO> reporte = monopatinService.obtenerReporteTiempoConPausas();
+    public ResponseEntity<List<ReporteTiempoDTO>> obtenerReporteTiempoConPausas() {
+        List<ReporteTiempoDTO> reporte = monopatinService.obtenerReporteTiempoConPausas();
         if (reporte.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
@@ -75,8 +75,8 @@ public class MonopatinController {
     }
 
     @GetMapping("/reportes/tiempo-sin-pausas")
-    public ResponseEntity<List<ReporteTiempoSinPausaDTO>> obtenerReporteTiempoSinPausas() {
-        List<ReporteTiempoSinPausaDTO> reporte = monopatinService.obtenerReporteTiempoSinPausas();
+    public ResponseEntity<List<ReporteTiempoDTO>> obtenerReporteTiempoSinPausas() {
+        List<ReporteTiempoDTO> reporte = monopatinService.obtenerReporteTiempoSinPausas();
         if (reporte.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }

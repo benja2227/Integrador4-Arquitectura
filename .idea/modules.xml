@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Integrador4-Arquitectura.iml" filepath="$PROJECT_DIR$/.idea/Integrador4-Arquitectura.iml" />
+      <module fileurl="file://$PROJECT_DIR$/App-Monopatin-Electrico/config-service/config-service.iml" filepath="$PROJECT_DIR$/App-Monopatin-Electrico/config-service/config-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/App-Monopatin-Electrico/eureka-service/eureka-service.iml" filepath="$PROJECT_DIR$/App-Monopatin-Electrico/eureka-service/eureka-service.iml" />
     </modules>
   </component>
 </project>

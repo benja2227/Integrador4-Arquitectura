@@ -14,10 +14,9 @@ import java.util.Optional;
 @Repository
 public interface AdministradorRepository extends JpaRepository<Administrador, Long> {
 
-
-
         @Query("SELECT a FROM Administrador a WHERE a.fecha <= :fecha ORDER BY a.fecha DESC")
         public Administrador findTopByFechaLessThanEqualOrderByFechaDesc(@Param("fecha") LocalDateTime fecha);
 
-
+        @Query("SELECT a.topeKm FROM Administrador a")
+        int getTopeKm();
 }

@@ -8,13 +8,13 @@ import java.util.List;
 
 public interface MonopatinRepository extends JpaRepository<Monopatin,Long> {
 
-    @Query("SELECT m.id, SUM(m.kmTotales) FROM Monopatin m GROUP BY m.id")
+    @Query("SELECT m.id, m.kmTotales FROM Monopatin m GROUP BY m.id")
     List<Object[]> reporteKilometraje();
 
-    @Query("SELECT m.id, SUM(m.kmMantenimiento) FROM Monopatin m GROUP BY m.id")
+    @Query("SELECT m.id, m.tiempoDeUso FROM Monopatin m GROUP BY m.id")
     List<Object[]> reporteTiempoConPausas();
 
-    @Query("SELECT m.id, (SUM(m.kmTotales) - SUM(m.kmTotales)) FROM Monopatin m GROUP BY m.id")
+    @Query("SELECT m.id, (m.tiempoDeUso - m.tiempoEnPausa) FROM Monopatin m GROUP BY m.id")
     List<Object[]> reporteTiempoSinPausas();
 
 

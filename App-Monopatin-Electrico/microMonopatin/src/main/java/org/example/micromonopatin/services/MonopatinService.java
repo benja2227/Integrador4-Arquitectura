@@ -33,7 +33,9 @@ public class MonopatinService{
         monopatin.setLatitud(monopatinRequestDTO.getLatitud());
         monopatin.setLongitud(monopatinRequestDTO.getLongitud());
         monopatin.setEnMantenimiento(monopatinRequestDTO.isEnMantenimiento());
-        monopatin.setKmMantenimiento(monopatinRequestDTO.getKmMantenimiento());
+        monopatin.setKmParaMantenimiento(monopatinRequestDTO.getKmParaMantenimiento());
+        monopatin.setTiempoDeUso(monopatinRequestDTO.getTiempoDeUso());
+        monopatin.setTiempoEnPausa(monopatinRequestDTO.getTiempoEnPausa());
 
         Monopatin newMonopatin = monopatinRepository.save(monopatin);
         return mapToMonopatinResponseDTO(newMonopatin);
@@ -53,8 +55,8 @@ public class MonopatinService{
         if (monopatinRequestDTO.getLongitud() != null) {
             monopatin.setLongitud(monopatinRequestDTO.getLongitud());
         }
-        if (monopatinRequestDTO.getKmMantenimiento() != 0) {
-            monopatin.setKmMantenimiento(monopatinRequestDTO.getKmMantenimiento());
+        if (monopatinRequestDTO.getKmParaMantenimiento() != 0) {
+            monopatin.setKmParaMantenimiento(monopatinRequestDTO.getKmParaMantenimiento());
         }
         monopatin.setEnMantenimiento(monopatinRequestDTO.isEnMantenimiento());
 
@@ -76,7 +78,7 @@ public class MonopatinService{
         responseDTO.setLongitud(monopatin.getLongitud());
 
         responseDTO.setEnMantenimiento(monopatin.isEnMantenimiento());
-        responseDTO.setKmMantenimiento(monopatin.getKmMantenimiento());
+        responseDTO.setKmParaMantenimiento(monopatin.getKmParaMantenimiento());
         return responseDTO;
     }
 
@@ -87,24 +89,25 @@ public class MonopatinService{
                 .collect(Collectors.toList());
     }
 
-    public List<ReporteTiempoConPausaDTO> obtenerReporteTiempoConPausas() {
+    public List<ReporteTiempoDTO> obtenerReporteTiempoConPausas() {
+
         List<Object[]> result = monopatinRepository.reporteTiempoConPausas();
         return result.stream()
-                .map(obj -> new ReporteTiempoConPausaDTO((Long) obj[0], (Long) obj[1]))
+                .map(obj -> new ReporteTiempoDTO((Long) obj[0], (Long) obj[1]))
                 .collect(Collectors.toList());
     }
 
-    public List<ReporteTiempoSinPausaDTO> obtenerReporteTiempoSinPausas() {
+    public List<ReporteTiempoDTO> obtenerReporteTiempoSinPausas() {
         List<Object[]> result = monopatinRepository.reporteTiempoSinPausas();
         return result.stream()
-                .map(obj -> new ReporteTiempoSinPausaDTO((Long) obj[0], (Long) obj[1]))
+                .map(obj -> new ReporteTiempoDTO((Long) obj[0], (Long) obj[1]))
                 .collect(Collectors.toList());
     }
 
     public void updateMantenimiento(Long id, boolean enMantenimiento) {
         Monopatin monopatin = monopatinRepository.findById(id).orElseThrow(() -> new RuntimeException("El monopatín con ID " + id + " no fue encontrado"));
         if(!enMantenimiento){
-            monopatin.setKmMantenimiento(0);
+            monopatin.setKmParaMantenimiento(0);
         }
         monopatin.setEnMantenimiento(enMantenimiento);
         monopatinRepository.save(monopatin);

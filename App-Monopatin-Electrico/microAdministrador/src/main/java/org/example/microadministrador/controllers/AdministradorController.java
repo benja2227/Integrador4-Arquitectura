@@ -1,11 +1,10 @@
 package org.example.microadministrador.controllers;
 
 
-import org.example.microadministrador.DTO.AdministradorResponseDTO;
-import org.example.microadministrador.DTO.AdministradorRequestDTO;
+import org.example.microadministrador.DTO.*;
 import org.example.microadministrador.services.AdministradorService;
-
-import org.example.microadministrador.services.exception.NotFoundException;
+import org.example.microcuenta.DTO.CuentaResponseDTO;
+import org.example.microcuenta.services.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -77,6 +76,43 @@ public class AdministradorController {
         administradorService.updateEstadoCuenta(id,estado);
         return ResponseEntity.noContent().build();
     }
+
+    // a) Como encargado de mantenimiento quiero poder generar un reporte de uso de monopatines por
+    // kilómetros para establecer si un monopatín requiere de mantenimiento. Este reporte debe poder
+    // configurarse para incluir (o no) los tiempos de pausa.
+
+    // Con Pausa: GET /administrador/reporteA?includePausa=true
+    // Sin Pausa: GET /administrador/reporteA?includePausa=false
+    @GetMapping("/reporteA")
+    public ResponseEntity<List<ReporteMonopatinMantDTO>> generarReporteDeMantenimiento(
+            @RequestParam(defaultValue = "false") boolean includePausa
+    ) {
+        try {
+            return ResponseEntity.ok(administradorService.generarReporteA(includePausa));
+        } catch (NotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    // c) Como administrador quiero consultar los monopatines con más de X viajes en un cierto año.
+    //@GetMapping("/reporteC/cantViajes/{cant-viajes}/anio/{anio}")
+    @GetMapping("/reporteC/{cantViajes}/{anio}")
+    public ResponseEntity<List<ReporteMonopatinMantenimientoDTO>> generarReporteDeMantenimiento(
+            @PathVariable int cantViajes, @PathVariable int anio
+    ) {
+        try {
+            return ResponseEntity.ok(administradorService.generarReporteC(cantViajes, anio));
+        } catch (NotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
+    @
+    public List<MonopatinDTO> obtenerMonopatines() {
+        return administradorService.obtenerMonopatines();
+    }
+
 
 
 }

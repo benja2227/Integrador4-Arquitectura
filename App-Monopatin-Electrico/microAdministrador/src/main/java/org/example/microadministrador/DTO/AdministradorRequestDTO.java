@@ -1,6 +1,7 @@
 package org.example.microadministrador.DTO;
 
 
+import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -24,5 +25,9 @@ public class AdministradorRequestDTO {
 
     @NotNull(message = "La fecha es obligatoria.")
     private LocalDateTime fecha;
+
+    @NotNull(message = "El campo topeKm es obligatorio.")
+    @NotEmpty(message = "El campo topeKm no  puede estar vacío")
+    private int topeKm;
 
 }

@@ -28,5 +28,8 @@ public class Administrador {
     @NotNull
     @NotEmpty
     private LocalDateTime fecha;
+    @NotNull
+    @NotEmpty
+    private Integer topeKm;
 
 }
