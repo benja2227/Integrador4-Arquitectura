@@ -65,15 +65,7 @@ public class UsuarioController{
         }
     }
 
-@GetMapping("/{idUsuario}/cuenta")
-    public ResponseEntity<List<CuentaResponseDTO>> getCuentasPorIdUsuario(@PathVariable Long idUsuario){
-       try{
-           return ResponseEntity.ok(usuarioService.getCuentasPorIdUsuario(idUsuario));
-       }
-       catch( NotFoundException e){
-           return ResponseEntity.notFound().build();
-       }
-    }
+
 
 }
 

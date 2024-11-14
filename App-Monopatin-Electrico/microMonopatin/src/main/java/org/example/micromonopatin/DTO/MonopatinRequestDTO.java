@@ -11,6 +11,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class MonopatinRequestDTO {
+    @NotNull(message = "El campo id es obligatorio.")
+    @NotEmpty(message = "El campo id no  puede estar vacío")
+    private Long id;
     @NotNull(message = "El campo kmTotales es obligatorio.")
     @NotEmpty(message = "El campo kmTotales no  puede estar vacío")
     private int kmTotales;

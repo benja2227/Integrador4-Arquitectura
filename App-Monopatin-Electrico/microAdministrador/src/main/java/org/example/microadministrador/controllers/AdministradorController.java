@@ -74,35 +74,20 @@ public class AdministradorController {
     // kilómetros para establecer si un monopatín requiere de mantenimiento. Este reporte debe poder
     // configurarse para incluir (o no) los tiempos de pausa.
 
-    // Con Pausa: GET /administrador/reporteA?includePausa=true
-    // Sin Pausa: GET /administrador/reporteA?includePausa=false
-    @GetMapping("/reporteA")
+    @GetMapping("/reporteA/{id}")
     public ResponseEntity<List<ReporteMonopatinMantDTO>> generarReporteDeMantenimiento(
-            @RequestParam(defaultValue = "false") boolean includePausa
-    ) {
+            @RequestParam(defaultValue = "false") boolean includePausa,  @PathVariable Long id) {
         try {
-            return ResponseEntity.ok(administradorService.generarReporteA(includePausa));
+            return ResponseEntity.ok(administradorService.generarReporteA(includePausa, id));
         } catch (NotFoundException e) {
             return ResponseEntity.notFound().build();
         }
     }
 
-//    @GetMapping("/reporteA/{includePausa}")
-//    public ResponseEntity<List<ReporteMonopatinMantDTO>> generarReporteDeMantenimiento(
-//            @PathVariable boolean includePausa
-//    ) {
-//        // Comentamos la lógica original para pruebas:
-//
-//        try {
-//            return ResponseEntity.ok(administradorService.generarReporteA(includePausa));
-//        } catch (NotFoundException e) {
-//            return ResponseEntity.notFound().build();
-//        }
-//    }
 
     //b) Como administrador quiero poder anular cuentas para inhabilitar el uso momentaneo de
     // la misma
-    @PutMapping("/idcuenta/{id}/estado/{boolean}")
+    @PutMapping("/idcuenta/{id}/estado/{estado}")
     public ResponseEntity<Void> updateEstadoCuenta(@PathVariable Long id, @PathVariable boolean estado) {
         administradorService.updateEstadoCuenta(id,estado);
         return ResponseEntity.noContent().build();

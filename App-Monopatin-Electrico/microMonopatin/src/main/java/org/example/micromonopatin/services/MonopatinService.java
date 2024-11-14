@@ -29,6 +29,7 @@ public class MonopatinService{
     @Transactional
     public MonopatinResponseDTO save(MonopatinRequestDTO monopatinRequestDTO) {
         Monopatin monopatin = new Monopatin();
+        monopatin.setId(monopatinRequestDTO.getId());
         monopatin.setKmTotales(monopatinRequestDTO.getKmTotales());
         monopatin.setLatitud(monopatinRequestDTO.getLatitud());
         monopatin.setLongitud(monopatinRequestDTO.getLongitud());
@@ -73,6 +74,7 @@ public class MonopatinService{
 
     private MonopatinResponseDTO mapToMonopatinResponseDTO(Monopatin monopatin) {
         MonopatinResponseDTO responseDTO = new MonopatinResponseDTO();
+        responseDTO.setId(monopatin.getId());
         responseDTO.setKmTotales(monopatin.getKmTotales());
         responseDTO.setLatitud(monopatin.getLatitud());
         responseDTO.setLongitud(monopatin.getLongitud());

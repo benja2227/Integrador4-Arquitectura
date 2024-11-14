@@ -84,12 +84,13 @@ public class CuentaService {
     }
 
 
-    public CuentaResponseDTO updateEstadoCuenta(Long id, Boolean activa){
+    public CuentaResponseDTO updateEstadoCuenta(Long id, boolean activa){
         Cuenta cuenta = cuentaRepository.findById(id).orElseThrow(
                 () -> new NotFoundException("La cuenta con ID " + id + " no fue encontrada")
         );
-
+        System.out.println("ENTREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
         cuenta.setActiva(activa);
+        System.out.println(cuenta);
         cuentaRepository.save(cuenta);
         return mapToCuentaResponseDTO(cuenta);
     }

@@ -20,8 +20,7 @@ public class UsuarioServicio {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
-    @Autowired
-    private CuentaFeignClient cuentaFeignClient;
+
     @Autowired
     private ResourceServerTokenRelayAutoConfiguration resourceServerTokenRelayAutoConfiguration;
 
@@ -109,7 +108,7 @@ public class UsuarioServicio {
     private UsuarioResponseDTO mapToUsuarioResponseDTO(Usuario usuario) {
 
         UsuarioResponseDTO responseDTO = new UsuarioResponseDTO();
-
+        responseDTO.setId(usuario.getId());
         responseDTO.setNombre(usuario.getNombre());
         responseDTO.setApellido(usuario.getApellido());
         responseDTO.setEmail(usuario.getEmail());
@@ -118,9 +117,7 @@ public class UsuarioServicio {
         return responseDTO;
     }
 
-    public List<CuentaResponseDTO> getCuentasPorIdUsuario(Long usuarioId) {
-        return this.cuentaFeignClient.getCuentasPorIdUsuario(usuarioId);
-    }
+
 
 
 }

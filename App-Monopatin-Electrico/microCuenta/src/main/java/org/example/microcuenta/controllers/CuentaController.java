@@ -63,9 +63,9 @@ public class CuentaController {
     }
 
     @PutMapping("/id/{id}/activa/{estado}")
-    public ResponseEntity<CuentaResponseDTO> updateEstadoCuenta(@PathVariable("id") Long id, @PathVariable("estado") boolean activa) {
+    public ResponseEntity<CuentaResponseDTO> updateEstadoCuenta(@PathVariable("id") Long id, @PathVariable("estado") boolean estado) {
         try {
-            return ResponseEntity.ok(cuentaService.updateEstadoCuenta(id, activa));
+            return ResponseEntity.ok(cuentaService.updateEstadoCuenta(id, estado));
         } catch (NotFoundException e) {
             return ResponseEntity.notFound().build();
         }

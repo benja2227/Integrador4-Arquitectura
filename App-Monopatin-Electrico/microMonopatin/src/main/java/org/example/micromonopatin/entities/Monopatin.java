@@ -14,7 +14,6 @@ import jakarta.validation.constraints.NotNull;
 @AllArgsConstructor
 public class Monopatin {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull

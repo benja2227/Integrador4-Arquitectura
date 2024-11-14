@@ -136,10 +136,10 @@ public class AdministradorService {
 
 
 
-    public List<ReporteMonopatinMantDTO> generarReporteA(Boolean includePausa) {
+    public List<ReporteMonopatinMantDTO> generarReporteA(Boolean includePausa, Long id) {
 
 
-        Integer topeKm = 1;//this.administradorRepository.getTopeKm();
+        Integer topeKm = this.administradorRepository.findById(id).get().getTopeKm();
         List<MonopatinDTO> monopatines = monopatinFeignClient.findAll();
 
         return monopatines.stream().map(monopatin -> {
