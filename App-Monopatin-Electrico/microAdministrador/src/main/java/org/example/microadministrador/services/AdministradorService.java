@@ -6,12 +6,14 @@ import jakarta.transaction.Transactional;
 import org.example.microadministrador.DTO.*;
 import org.example.microadministrador.entities.Administrador;
 import org.example.microadministrador.feignClients.MonopatinFeignClient;
+import org.example.microadministrador.feignClients.ViajeFeignClient;
 import org.example.microadministrador.repositories.AdministradorRepository;
 import org.example.microadministrador.services.exception.FechaNulaException;
 import org.example.microadministrador.services.exception.NotFoundException;
 import org.example.microadministrador.services.exception.TarifaNoEncontradaException;
 import org.example.microadministrador.feignClients.CuentaFeignClient;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -31,6 +33,9 @@ public class AdministradorService {
 
     @Autowired
     private CuentaFeignClient cuentaFeignClient;
+
+    @Autowired
+    private ViajeFeignClient viajeFeignClient;
 
     public List<AdministradorResponseDTO> findAll() {
         List<Administrador> administradores = administradorRepository.findAll();
@@ -161,8 +166,8 @@ public class AdministradorService {
         }).collect(Collectors.toList());
     }
 
-        public Object generarReporteC(int cantViajes, int anio) {
+        public List<ReporteMonopatinPorCantViajesPorAnioDTO> generarReporteC(int cantViajes, int anio) {
+            return this.viajeFeignClient.getMonopatinByCantViajeYAnio(cantViajes,anio);
 
-            return null;
         }
     }

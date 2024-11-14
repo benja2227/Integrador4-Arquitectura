@@ -2,6 +2,7 @@ package org.example.microviaje.controllers;
 
 
 
+import org.example.microviaje.DTO.ReporteMonopatinPorCantViajesPorAnioDTO;
 import org.example.microviaje.DTO.ViajeRequestDTO;
 import org.example.microviaje.DTO.ViajeResponseDTO;
 import org.example.microviaje.services.ViajeService;
@@ -107,5 +108,15 @@ public class ViajeController {
     public ResponseEntity<ViajeResponseDTO> updatePrecio(@PathVariable Long idviaje){
         ViajeResponseDTO newUsuario = viajeService.updatePrecio(idviaje);
         return ResponseEntity.ok(newUsuario);
+    }
+
+    @GetMapping("/cantViajes/{cantViajes}/anio/{anio}")
+    public ResponseEntity<List<ReporteMonopatinPorCantViajesPorAnioDTO>> getMonopatinByCantViajeYAnio(@PathVariable int cantViajes, @PathVariable int anio){
+        try {
+            return ResponseEntity.ok(this.viajeService.getMonopatinByCantViajeYAnio(cantViajes, anio));
+        }
+        catch(NotFoundException e){
+            return ResponseEntity.notFound().build();
+        }
     }
 }

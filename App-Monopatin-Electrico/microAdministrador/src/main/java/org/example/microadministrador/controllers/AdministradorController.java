@@ -108,12 +108,12 @@ public class AdministradorController {
         return ResponseEntity.noContent().build();
     }
 
-    /*
+
     // c) Como administrador quiero consultar los monopatines con más de X viajes en un cierto año.
     //@GetMapping("/reporteC/cantViajes/{cant-viajes}/anio/{anio}")
 
-    @GetMapping("/reporteC/{cantViajes}/{anio}")
-    public ResponseEntity<List<ReporteMonopatinMantenimientoDTO>> generarReporteDeMantenimiento(
+    @GetMapping("/reporteC/cantViajes/{cantViajes}/anio/{anio}")
+    public ResponseEntity<List<ReporteMonopatinPorCantViajesPorAnioDTO>> generarReporteDeMantenimiento(
             @PathVariable int cantViajes, @PathVariable int anio
     ) {
         try {
@@ -124,11 +124,8 @@ public class AdministradorController {
     }
 
 
-    @
-    public List<MonopatinDTO> obtenerMonopatines() {
-        return administradorService.obtenerMonopatines();
-    }
 
 
-*/
+
+
 }

@@ -4,6 +4,7 @@ import feign.Client;
 import jakarta.transaction.Transactional;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import org.example.microviaje.DTO.ReporteMonopatinPorCantViajesPorAnioDTO;
 import org.example.microviaje.DTO.ViajeRequestDTO;
 import org.example.microviaje.DTO.ViajeResponseDTO;
 import org.example.microviaje.entities.Viaje;
@@ -15,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.Duration;
 import java.time.LocalDateTime;
+import java.time.Month;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -204,6 +206,22 @@ public class ViajeService {
         responseDTO.setLongitudInicio(viaje.getLongitudInicio());
 
         return responseDTO;
+    }
+
+
+    public List<ReporteMonopatinPorCantViajesPorAnioDTO> getMonopatinByCantViajeYAnio(int cantViajes, int anio) {
+        // Crear el inicio y el fin del año
+        LocalDateTime inicioAnio = LocalDateTime.of(anio, Month.JANUARY, 1, 0, 0, 0, 0);
+        LocalDateTime finAnio = LocalDateTime.of(anio + 1, Month.JANUARY, 1, 0, 0, 0, 0);
+
+        List<Long> id_monopatines = viajeRepository.getMonopatinByCantViajeYAnio(cantViajes, inicioAnio, finAnio);
+        return id_monopatines.stream().map(id_monopatin -> {
+            return new ReporteMonopatinPorCantViajesPorAnioDTO(
+                    id_monopatin,
+                    cantViajes,
+                    anio
+            );
+        }).collect(Collectors.toList());
     }
 }
 
