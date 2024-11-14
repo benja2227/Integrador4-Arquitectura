@@ -18,7 +18,6 @@
 
     <modules>
         <module>microUsuario</module>
-        <module>microMantenimiento</module>
         <module>microMonopatin</module>
         <module>microFacturacion</module>
         <module>microViaje</module>

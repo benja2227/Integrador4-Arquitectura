@@ -6,14 +6,11 @@
       <list>
         <option value="$PROJECT_DIR$/App-Monopatin-Electrico/pom.xml" />
         <option value="$PROJECT_DIR$/App-Monopatin-Electrico/microEstacion/pom.xml" />
-        <option value="$PROJECT_DIR$/App-Monopatin-Electrico/microAdministrador/pom.xml" />
-        <option value="$PROJECT_DIR$/App-Monopatin-Electrico/config-service/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
       <set>
-        <option value="$PROJECT_DIR$/App-Monopatin-Electrico/config-service/pom.xml" />
-        <option value="$PROJECT_DIR$/App-Monopatin-Electrico/eureka-service/pom.xml" />
+        <option value="$PROJECT_DIR$/App-Monopatin-Electrico/microMantenimiento/pom.xml" />
       </set>
     </option>
   </component>

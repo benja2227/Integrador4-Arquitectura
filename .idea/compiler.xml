@@ -15,12 +15,12 @@
         <module name="microUsuario" />
         <module name="microViaje" />
         <module name="gateway" />
-        <module name="microMantenimiento" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="config-service" target="17" />
       <module name="eureka-service" target="17" />
+      <module name="microMantenimiento" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

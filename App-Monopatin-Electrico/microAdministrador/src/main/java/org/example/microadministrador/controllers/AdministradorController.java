@@ -76,9 +76,9 @@ public class AdministradorController {
 
     // Con Pausa: GET /administrador/reporteA?includePausa=true
     // Sin Pausa: GET /administrador/reporteA?includePausa=false
-    @GetMapping("/reporteA/pausa/{includePausa}")
+    @GetMapping("/reporteA")
     public ResponseEntity<List<ReporteMonopatinMantDTO>> generarReporteDeMantenimiento(
-            @PathVariable boolean includePausa
+            @RequestParam(defaultValue = "false") boolean includePausa
     ) {
         try {
             return ResponseEntity.ok(administradorService.generarReporteA(includePausa));
@@ -86,6 +86,19 @@ public class AdministradorController {
             return ResponseEntity.notFound().build();
         }
     }
+
+//    @GetMapping("/reporteA/{includePausa}")
+//    public ResponseEntity<List<ReporteMonopatinMantDTO>> generarReporteDeMantenimiento(
+//            @PathVariable boolean includePausa
+//    ) {
+//        // Comentamos la lógica original para pruebas:
+//
+//        try {
+//            return ResponseEntity.ok(administradorService.generarReporteA(includePausa));
+//        } catch (NotFoundException e) {
+//            return ResponseEntity.notFound().build();
+//        }
+//    }
 
     //b) Como administrador quiero poder anular cuentas para inhabilitar el uso momentaneo de
     // la misma
