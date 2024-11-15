@@ -74,6 +74,7 @@ public class CuentaService {
         responseDTO.setId_usuario(cuenta.getId_usuario());
         responseDTO.setFechaAlta(cuenta.getFechaAlta());
         responseDTO.setSaldo(cuenta.getSaldo());
+        responseDTO.setActiva(cuenta.isActiva());
         return responseDTO;
     }
 
@@ -91,7 +92,7 @@ public class CuentaService {
         System.out.println("ENTREEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
         cuenta.setActiva(activa);
         System.out.println(cuenta);
-        cuentaRepository.save(cuenta);
+        this.cuentaRepository.save(cuenta);
         return mapToCuentaResponseDTO(cuenta);
     }
 

@@ -6,6 +6,8 @@ import lombok.*;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
+import java.time.LocalDate;
+
 
 @Entity
 @Getter
@@ -15,7 +17,6 @@ import jakarta.validation.constraints.NotNull;
 @AllArgsConstructor
 public class Facturacion {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull
     @NotEmpty
@@ -25,6 +26,9 @@ public class Facturacion {
     private Long longitud;
     @NotNull
     @NotEmpty
-    private float precioFinal;
+    private Float precioFinal;
+    @NotNull
+    @NotEmpty
+    private LocalDate fechaFacturacion;
 
 }

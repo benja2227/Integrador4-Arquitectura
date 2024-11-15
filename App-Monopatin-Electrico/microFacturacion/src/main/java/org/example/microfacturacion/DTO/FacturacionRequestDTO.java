@@ -7,10 +7,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class FacturacionRequestDTO {
+    @NotNull(message = "El campo id es obligatorio.")
+    @NotEmpty(message= "El campo id es obligatorio")
+    private Long id;
 
     @NotNull(message = "La latitud es un campo obligatorio.")
     @NotEmpty(message= "No debe tener una latitud vacía")
@@ -23,4 +28,8 @@ public class FacturacionRequestDTO {
     @NotNull(message = "El precio final es obligatorio.")
     @NotEmpty(message= "No debe tener un precioFinal sin determianr")
     private float precioFinal;
+
+    @NotNull(message = "La fecha de facturacion es obligatorio.")
+    @NotEmpty(message= "No debe tener una fecha de facturacion sin determianr")
+    private LocalDate fechaFacturacion;
 }

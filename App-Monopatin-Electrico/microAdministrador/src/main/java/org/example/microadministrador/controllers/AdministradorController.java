@@ -99,8 +99,7 @@ public class AdministradorController {
 
     @GetMapping("/reporteC/cantViajes/{cantViajes}/anio/{anio}")
     public ResponseEntity<List<ReporteMonopatinPorCantViajesPorAnioDTO>> generarReporteDeMantenimiento(
-            @PathVariable int cantViajes, @PathVariable int anio
-    ) {
+            @PathVariable int cantViajes, @PathVariable int anio) {
         try {
             return ResponseEntity.ok(administradorService.generarReporteC(cantViajes, anio));
         } catch (NotFoundException e) {
@@ -109,8 +108,17 @@ public class AdministradorController {
     }
 
 
+    //d) Como administrador quiero consultar el total facturado en un rango de meses de cierto año.
 
-
-
-
+    @GetMapping("/reporteD")
+    public ResponseEntity<ReporteFacturacionRangoDeMesesDTO> getFacturacionEntreMesesDeUnAnio(@RequestParam(name = "mesInicio", defaultValue = "1") int mesInicio, @RequestParam(name = "mesFinal", defaultValue = "2") int mesFinal, @RequestParam(name = "anio", defaultValue = "2023") int anio){
+         {
+            try {
+                System.out.println("ENTRE AL CONTROLLER");
+                return ResponseEntity.ok(administradorService.generarReporteD(mesInicio, mesFinal, anio));
+            } catch (NotFoundException e) {
+                return ResponseEntity.notFound().build();
+            }
+        }
+    }
 }

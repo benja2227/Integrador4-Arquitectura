@@ -3,13 +3,14 @@ package org.example.microfacturacion.controllers;
 
 import org.example.microfacturacion.DTO.FacturacionRequestDTO;
 import org.example.microfacturacion.DTO.FacturacionResponseDTO;
+import org.example.microfacturacion.DTO.ReporteFacturacionRangoDeMesesDTO;
 import org.example.microfacturacion.services.FacturacionService;
 import org.example.microfacturacion.services.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-        import java.util.List;
+import java.util.List;
 
 @RestController
 @RequestMapping("/facturacion")
@@ -55,6 +56,15 @@ public class FacturacionController {
         } catch (NotFoundException e) {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/facturacionEntreFechas")
+    public ResponseEntity<ReporteFacturacionRangoDeMesesDTO> getFacturacionEntreMesesDeUnAnio(@RequestParam(name = "mesInicio", defaultValue = "1") int mesInicio, @RequestParam(name = "mesFinal", defaultValue = "2") int mesFinal, @RequestParam(name = "anio", defaultValue = "2023") int anio){
+            try {
+                return ResponseEntity.ok(facturacionService.generarReporteDeFacturacion(mesInicio, mesFinal, anio));
+            } catch (NotFoundException e) {
+                return ResponseEntity.notFound().build();
+            }
     }
 
 

@@ -17,5 +17,11 @@ public interface MonopatinRepository extends JpaRepository<Monopatin,Long> {
     @Query("SELECT m.id, (m.tiempoDeUso - m.tiempoEnPausa) FROM Monopatin m GROUP BY m.id")
     List<Object[]> reporteTiempoSinPausas();
 
+    @Query("SELECT " +
+            "(SELECT COUNT(m1) FROM Monopatin m1 WHERE m1.enMantenimiento = true), " +
+            "(SELECT COUNT(m2) FROM Monopatin m2 WHERE m2.enMantenimiento = false) " +
+            "FROM Monopatin m")
+    Object[] contarMonopatines();
+
 
 }

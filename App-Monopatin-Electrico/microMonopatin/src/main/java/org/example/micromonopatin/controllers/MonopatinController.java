@@ -93,4 +93,13 @@ public class MonopatinController {
             return ResponseEntity.notFound().build();
         }
     }
+
+    @GetMapping("/estado")
+    public ResponseEntity<EstadoDeMonopatinesDTO> obtenerEstadoDeMonopatines() {
+        try {
+            return ResponseEntity.ok(this.monopatinService.obtenerEstadoDeMonopatines());
+        } catch (NotFoundException e) {
+            return ResponseEntity.notFound().build(); // Devuelve un 404 si no se encuentra la información
+        }
+    }
 }

@@ -214,13 +214,17 @@ public class ViajeService {
         LocalDateTime inicioAnio = LocalDateTime.of(anio, Month.JANUARY, 1, 0, 0, 0, 0);
         LocalDateTime finAnio = LocalDateTime.of(anio + 1, Month.JANUARY, 1, 0, 0, 0, 0);
 
-        List<Long> id_monopatines = viajeRepository.getMonopatinByCantViajeYAnio(cantViajes, inicioAnio, finAnio);
+        // Obtener la lista de resultados
+        List<Object[]> id_monopatines = viajeRepository.getMonopatinByCantViajeYAnio(cantViajes, inicioAnio, finAnio);
+
+        // Mapear los resultados a DTOs
         return id_monopatines.stream().map(id_monopatin -> {
-            return new ReporteMonopatinPorCantViajesPorAnioDTO(
-                    id_monopatin,
-                    cantViajes,
-                    anio
-            );
+            // id_monopatin[0] es el id_monopatin y id_monopatin[1] es el conteo de viajes
+            Long idMonopatin = (Long) id_monopatin[0];
+            Long cantViajesRealizados = (Long) id_monopatin[1];
+
+            // Devolver el DTO con los valores
+            return new ReporteMonopatinPorCantViajesPorAnioDTO(idMonopatin, cantViajesRealizados, anio);
         }).collect(Collectors.toList());
     }
 }

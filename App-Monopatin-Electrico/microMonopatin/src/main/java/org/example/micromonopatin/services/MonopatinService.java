@@ -114,4 +114,15 @@ public class MonopatinService{
         monopatin.setEnMantenimiento(enMantenimiento);
         monopatinRepository.save(monopatin);
     }
+
+    public EstadoDeMonopatinesDTO obtenerEstadoDeMonopatines() {
+        Object[] resultado = monopatinRepository.contarMonopatines();
+
+        Long monopatinesEnMantenimiento = (Long) resultado[0];
+        Long monopatinesEnServicio = (Long) resultado[1];
+        System.out.println(monopatinesEnMantenimiento + " " + monopatinesEnServicio);
+
+
+        return new EstadoDeMonopatinesDTO(monopatinesEnMantenimiento, monopatinesEnServicio);
+    }
 }

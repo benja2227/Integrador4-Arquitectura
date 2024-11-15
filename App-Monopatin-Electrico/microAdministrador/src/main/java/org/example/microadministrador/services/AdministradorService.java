@@ -5,6 +5,7 @@ package org.example.microadministrador.services;
 import jakarta.transaction.Transactional;
 import org.example.microadministrador.DTO.*;
 import org.example.microadministrador.entities.Administrador;
+import org.example.microadministrador.feignClients.FacturacionFeignClient;
 import org.example.microadministrador.feignClients.MonopatinFeignClient;
 import org.example.microadministrador.feignClients.ViajeFeignClient;
 import org.example.microadministrador.repositories.AdministradorRepository;
@@ -36,6 +37,9 @@ public class AdministradorService {
 
     @Autowired
     private ViajeFeignClient viajeFeignClient;
+
+    @Autowired
+    private FacturacionFeignClient facturacionFeignClient;
 
     public List<AdministradorResponseDTO> findAll() {
         List<Administrador> administradores = administradorRepository.findAll();
@@ -166,8 +170,14 @@ public class AdministradorService {
         }).collect(Collectors.toList());
     }
 
-        public List<ReporteMonopatinPorCantViajesPorAnioDTO> generarReporteC(int cantViajes, int anio) {
-            return this.viajeFeignClient.getMonopatinByCantViajeYAnio(cantViajes,anio);
+    public List<ReporteMonopatinPorCantViajesPorAnioDTO> generarReporteC(int cantViajes, int anio) {
+        return this.viajeFeignClient.getMonopatinByCantViajeYAnio(cantViajes,anio);
 
-        }
     }
+
+
+    public ReporteFacturacionRangoDeMesesDTO generarReporteD(int mesInicio, int mesFinal, int anio) {
+        System.out.println("ENTRE AL SERVICEEEE");
+        return this.facturacionFeignClient.getFacturacionEntreMesesDeUnAnio(mesInicio, mesFinal, anio);
+    }
+}
