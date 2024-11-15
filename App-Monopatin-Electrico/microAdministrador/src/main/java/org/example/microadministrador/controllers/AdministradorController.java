@@ -3,6 +3,7 @@ package org.example.microadministrador.controllers;
 import org.example.microadministrador.services.exception.NotFoundException;
 import org.example.microadministrador.DTO.*;
 import org.example.microadministrador.services.AdministradorService;
+import org.example.micromonopatin.DTO.EstadoDeMonopatinesDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,6 +32,10 @@ public class AdministradorController {
             return ResponseEntity.notFound().build();
         }
     }
+
+
+    //F) Como administrador quiero hacer un ajuste de precios, y que a partir de cierta fecha el sistema
+    //habilite los nuevos precios.
 
     @PostMapping("")
     public ResponseEntity<AdministradorResponseDTO> save(@RequestBody AdministradorRequestDTO administradorRequestDTO) {
@@ -116,6 +121,18 @@ public class AdministradorController {
             try {
                 System.out.println("ENTRE AL CONTROLLER");
                 return ResponseEntity.ok(administradorService.generarReporteD(mesInicio, mesFinal, anio));
+            } catch (NotFoundException e) {
+                return ResponseEntity.notFound().build();
+            }
+        }
+    }
+
+    @GetMapping("/reporteE")
+    public ResponseEntity<EstadoDeMonopatinesDTO> getEstadoDeMonopatines(){
+        {
+            try {
+
+                return ResponseEntity.ok(administradorService.getEstadoDeMonopatines());
             } catch (NotFoundException e) {
                 return ResponseEntity.notFound().build();
             }

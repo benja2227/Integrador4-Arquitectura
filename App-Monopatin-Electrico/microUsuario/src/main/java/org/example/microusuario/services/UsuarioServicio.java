@@ -3,8 +3,11 @@ package org.example.microusuario.services;
 import jakarta.transaction.Transactional;
 //import org.example.microcuenta.DTO.CuentaResponseDTO;
 import org.example.microcuenta.DTO.CuentaResponseDTO;
+import org.example.microusuario.DTO.ReporteMonopatinesCercanosDTO;
 import org.example.microusuario.DTO.UsuarioRequestDTO;
 import org.example.microusuario.DTO.UsuarioResponseDTO;
+
+import org.example.microusuario.feignClients.MonopatinFeignClient;
 import org.example.microusuario.repositories.UsuarioRepository;
 import org.example.microusuario.entities.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +23,8 @@ public class UsuarioServicio {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+    @Autowired
+    private MonopatinFeignClient monopatinFeignClient;
 
     @Autowired
     private ResourceServerTokenRelayAutoConfiguration resourceServerTokenRelayAutoConfiguration;
@@ -46,13 +51,14 @@ public class UsuarioServicio {
 
         Usuario usuario = usuarioRepository.findById(usuarioRequestDTO.getId()).orElse(null);
         if (usuario == null) {
-            //¿HACEMOS CONTROLES?
             Usuario usuarioNuevo = new Usuario();
             usuarioNuevo.setNombre(usuarioRequestDTO.getNombre());
             usuarioNuevo.setApellido(usuarioRequestDTO.getApellido());
             usuarioNuevo.setEmail(usuarioRequestDTO.getEmail());
             usuarioNuevo.setTelefono(usuarioRequestDTO.getTelefono());
             usuarioNuevo.setId(usuarioRequestDTO.getId());
+            usuarioNuevo.setLatitud(usuarioRequestDTO.getLatitud());
+            usuarioNuevo.setLongitud(usuarioRequestDTO.getLongitud());
 
             usuarioRepository.save(usuario);
 
@@ -85,10 +91,12 @@ public class UsuarioServicio {
             if (usuarioRequestDTO.getTelefono() != null) {
                 usuario.setTelefono(usuarioRequestDTO.getTelefono());
             }
+            // la longitud y latitud pueden ser 0
+            usuario.setLatitud(usuarioRequestDTO.getLatitud());
+            usuario.setLongitud(usuarioRequestDTO.getLongitud());
             usuarioRepository.save(usuario);
 
             usuarioResponseDTO = mapToUsuarioResponseDTO(usuario);
-
 
         }
         return usuarioResponseDTO;
@@ -113,12 +121,14 @@ public class UsuarioServicio {
         responseDTO.setApellido(usuario.getApellido());
         responseDTO.setEmail(usuario.getEmail());
         responseDTO.setTelefono(usuario.getTelefono());
-
+        responseDTO.setLatitud(usuario.getLatitud());
+        responseDTO.setLongitud(usuario.getLongitud());
         return responseDTO;
     }
 
 
+    public List<ReporteMonopatinesCercanosDTO> generarReporteD(double latitud, double longitud, double rango) {
+        return monopatinFeignClient.getReporteDeMonopatinesCercanos(latitud, longitud, rango);
 
-
+    }
 }
-

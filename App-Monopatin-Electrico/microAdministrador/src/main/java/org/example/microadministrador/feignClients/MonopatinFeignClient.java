@@ -1,6 +1,7 @@
 package org.example.microadministrador.feignClients;
 
 import org.example.microadministrador.DTO.MonopatinDTO;
+import org.example.micromonopatin.DTO.EstadoDeMonopatinesDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -11,4 +12,7 @@ public interface MonopatinFeignClient {
 
     @GetMapping("")
     List<MonopatinDTO> findAll();
+
+    @GetMapping("/estado")
+    EstadoDeMonopatinesDTO getEstadoDeMonopatines();
 }

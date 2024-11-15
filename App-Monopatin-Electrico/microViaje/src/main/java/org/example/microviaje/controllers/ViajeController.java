@@ -104,10 +104,15 @@ public class ViajeController {
     */
 
 
-    @PostMapping("/determinarPrecio/{idViaje}")
-    public ResponseEntity<ViajeResponseDTO> updatePrecio(@PathVariable Long idviaje){
-        ViajeResponseDTO newUsuario = viajeService.updatePrecio(idviaje);
-        return ResponseEntity.ok(newUsuario);
+    @PutMapping("/determinarPrecio/{idViaje}")
+    public ResponseEntity<ViajeResponseDTO> updatePrecio(@PathVariable("idViaje") Long idviaje){
+        try {
+            return ResponseEntity.ok(viajeService.updatePrecio(idviaje));
+        }
+        catch(NotFoundException e){
+            return ResponseEntity.notFound().build();
+        }
+
     }
 
     @GetMapping("/cantViajes/{cantViajes}/anio/{anio}")

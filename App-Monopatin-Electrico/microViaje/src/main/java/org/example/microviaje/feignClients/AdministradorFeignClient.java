@@ -18,4 +18,5 @@ public interface AdministradorFeignClient {
     @GetMapping("/tarifaEspecialParaFecha/{fecha}")
     Float getTarifaEspecial(@PathVariable LocalDateTime fecha);
 
+
 }

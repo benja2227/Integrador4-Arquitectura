@@ -14,17 +14,18 @@ public class MonopatinRequestDTO {
     @NotNull(message = "El campo id es obligatorio.")
     @NotEmpty(message = "El campo id no  puede estar vacío")
     private Long id;
+
     @NotNull(message = "El campo kmTotales es obligatorio.")
     @NotEmpty(message = "El campo kmTotales no  puede estar vacío")
     private int kmTotales;
 
     @NotNull(message = "El campo latitud es obligatorio.")
     @NotEmpty(message = "El campo latitud no  puede estar vacío")
-    private Long latitud;
+    private double latitud;
 
     @NotNull(message = "El campo longitud es obligatorio.")
     @NotEmpty(message = "El campo longitud no  puede estar vacío")
-    private Long longitud;
+    private double longitud;
 
     @NotNull(message = "El campo enMantenimiento es obligatorio.")
     private boolean enMantenimiento;

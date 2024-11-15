@@ -10,6 +10,7 @@ import org.example.microviaje.DTO.ViajeResponseDTO;
 import org.example.microviaje.entities.Viaje;
 import org.example.microviaje.feignClients.AdministradorFeignClient;
 import org.example.microviaje.repositories.ViajeRepository;
+import org.example.microviaje.services.exception.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -123,7 +124,7 @@ public class ViajeService {
 
     public ViajeResponseDTO updatePrecio(Long id) {
         Viaje viaje = viajeRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("El viaje con ID " + id + " no fue encontrado")
+                () -> new NotFoundException("El viaje con ID " + id + " no fue encontrado")
         );
         //TIEMPO EN PAUSA
         Duration duracionPausa = Duration.between(viaje.getIncioEnPausa(), viaje.getFinEnPausa());

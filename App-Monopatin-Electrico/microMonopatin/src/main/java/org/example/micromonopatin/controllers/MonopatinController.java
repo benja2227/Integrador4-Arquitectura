@@ -102,4 +102,15 @@ public class MonopatinController {
             return ResponseEntity.notFound().build(); // Devuelve un 404 si no se encuentra la información
         }
     }
+
+    @GetMapping("/monopatines-cercanos/latitud/{latitud}/longitud/{longitud}/rango/{rango}")
+    public ResponseEntity<List<ReporteMonopatinesCercanosDTO>> generarReporteDeMonopatinesCercanos(
+            @PathVariable double latitud, @PathVariable double longitud, @PathVariable double rango
+    ) {
+        try {
+            return ResponseEntity.ok(monopatinService.getReporteDeMonopatinesCercanos(latitud,longitud,rango));
+        } catch (NotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }

@@ -6,10 +6,6 @@ import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 
 
-
-import java.util.List;
-
-
 @Entity
 @Getter
 @Setter
@@ -32,8 +28,13 @@ public class Usuario {
     @NotNull
     @NotEmpty
     private String telefono;
+    @NotNull
+    @NotEmpty
+    private double latitud;
+    @NotNull
+    @NotEmpty
+    private double longitud;
 
 }
-
 
 

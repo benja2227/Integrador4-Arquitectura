@@ -50,12 +50,10 @@ public class MonopatinService{
         if (monopatinRequestDTO.getKmTotales() != 0) {
             monopatin.setKmTotales(monopatinRequestDTO.getKmTotales());
         }
-        if (monopatinRequestDTO.getLatitud() != null) {
-            monopatin.setLatitud(monopatinRequestDTO.getLatitud());
-        }
-        if (monopatinRequestDTO.getLongitud() != null) {
-            monopatin.setLongitud(monopatinRequestDTO.getLongitud());
-        }
+
+        monopatin.setLatitud(monopatinRequestDTO.getLatitud());
+        monopatin.setLongitud(monopatinRequestDTO.getLongitud());
+
         if (monopatinRequestDTO.getKmParaMantenimiento() != 0) {
             monopatin.setKmParaMantenimiento(monopatinRequestDTO.getKmParaMantenimiento());
         }
@@ -115,14 +113,22 @@ public class MonopatinService{
         monopatinRepository.save(monopatin);
     }
 
+
+
+    public List<ReporteMonopatinesCercanosDTO> getReporteDeMonopatinesCercanos(double latitudUsuario, double longitudUsuario,double rango) {
+        List<Monopatin> monopatines = monopatinRepository.getReporteDeMonopatinesCercanos(latitudUsuario, longitudUsuario, rango);
+        return monopatines.stream()
+                .map(monopatin -> new ReporteMonopatinesCercanosDTO(
+                        monopatin.getId(),
+                        monopatin.getLatitud(),
+                        monopatin.getLongitud()
+                ))
+                .collect(Collectors.toList());
+    }
+
     public EstadoDeMonopatinesDTO obtenerEstadoDeMonopatines() {
-        Object[] resultado = monopatinRepository.contarMonopatines();
-
-        Long monopatinesEnMantenimiento = (Long) resultado[0];
-        Long monopatinesEnServicio = (Long) resultado[1];
-        System.out.println(monopatinesEnMantenimiento + " " + monopatinesEnServicio);
-
-
-        return new EstadoDeMonopatinesDTO(monopatinesEnMantenimiento, monopatinesEnServicio);
+        Long cantTrue = monopatinRepository.contarMonopatinesPorEstado(true);
+        Long cantFalse = monopatinRepository.contarMonopatinesPorEstado(false);
+        return new EstadoDeMonopatinesDTO(cantTrue,cantFalse);
     }
 }

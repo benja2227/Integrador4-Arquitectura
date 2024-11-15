@@ -13,6 +13,7 @@ import org.example.microadministrador.services.exception.FechaNulaException;
 import org.example.microadministrador.services.exception.NotFoundException;
 import org.example.microadministrador.services.exception.TarifaNoEncontradaException;
 import org.example.microadministrador.feignClients.CuentaFeignClient;
+import org.example.micromonopatin.DTO.EstadoDeMonopatinesDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -177,7 +178,10 @@ public class AdministradorService {
 
 
     public ReporteFacturacionRangoDeMesesDTO generarReporteD(int mesInicio, int mesFinal, int anio) {
-        System.out.println("ENTRE AL SERVICEEEE");
         return this.facturacionFeignClient.getFacturacionEntreMesesDeUnAnio(mesInicio, mesFinal, anio);
+    }
+
+    public EstadoDeMonopatinesDTO getEstadoDeMonopatines(){
+        return this.monopatinFeignClient.getEstadoDeMonopatines();
     }
 }

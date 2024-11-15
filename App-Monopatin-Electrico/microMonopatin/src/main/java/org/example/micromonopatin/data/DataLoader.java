@@ -17,16 +17,16 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         // Cargar datos iniciales
-        Monopatin monopatin1 = new Monopatin(1L, 1500, 40543212L, -38312415L, false, 0, 0, 0);
-        Monopatin monopatin2 = new Monopatin(2L, 2300, 40353454L, -38123876L, true, 100, 0, 0);
-        Monopatin monopatin3 = new Monopatin(3L, 3200, 40543321L, -38312300L, false, 200, 0, 0);
-        Monopatin monopatin4 = new Monopatin(4L, 2100, 40453000L, -38312000L, true, 50, 0, 0);
-        Monopatin monopatin5 = new Monopatin(5L, 1800, 40353645L, -38123456L, false, 0, 0, 0);
-        Monopatin monopatin6 = new Monopatin(6L, 2500, 40454000L, -38312100L, true, 120, 0, 0);
-        Monopatin monopatin7 = new Monopatin(7L, 3000, 40543212L, -38312415L, false, 0, 0, 0);
-        Monopatin monopatin8 = new Monopatin(8L, 2800, 40353454L, -38123876L, true, 80, 0, 0);
-        Monopatin monopatin9 = new Monopatin(9L, 2600, 40543321L, -38312300L, false, 150, 0, 0);
-        Monopatin monopatin10 = new Monopatin(10L, 2200, 40453000L, -38312000L, true, 40, 0, 0);
+        Monopatin monopatin1 = new Monopatin(1L, 1500, 40543212, -38312415, false, 0, 0, 0);
+        Monopatin monopatin2 = new Monopatin(2L, 2300, 40353454, -38123876, false, 100, 0, 0);
+        Monopatin monopatin3 = new Monopatin(3L, 3200, 40543321, -38312300, false, 200, 0, 0);
+        Monopatin monopatin4 = new Monopatin(4L, 2100, 40453000, -38312000, false, 50, 0, 0);
+        Monopatin monopatin5 = new Monopatin(5L, 1800, 785340.4, 333111.20, false, 0, 0, 0);
+        Monopatin monopatin6 = new Monopatin(6L, 2500, 40454000, -38312100, false, 120, 0, 0);
+        Monopatin monopatin7 = new Monopatin(7L, 3000, 40543212, -38312415, false, 0, 0, 0);
+        Monopatin monopatin8 = new Monopatin(8L, 2800, 40353454, -38123876, false, 80, 0, 0);
+        Monopatin monopatin9 = new Monopatin(9L, 2600, 40543321, -38312300, false, 150, 0, 0);
+        Monopatin monopatin10 = new Monopatin(10L, 2200, 329856.0, 220343.12, false, 40, 0, 0);
 
         monopatinRepository.save(monopatin1);
         monopatinRepository.save(monopatin2);

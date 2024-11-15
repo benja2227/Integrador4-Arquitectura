@@ -2,6 +2,7 @@ package org.example.microusuario.controllers;
 
 
 import org.example.microcuenta.DTO.CuentaResponseDTO;
+import org.example.microusuario.DTO.ReporteMonopatinesCercanosDTO;
 import org.example.microusuario.DTO.UsuarioRequestDTO;
 import org.example.microusuario.DTO.UsuarioResponseDTO;
 import org.example.microusuario.services.UsuarioServicio;
@@ -65,7 +66,19 @@ public class UsuarioController{
         }
     }
 
+    // g) Como usuario quiero lun listado de los monopatines cercanos a mi zona, para poder encontrar
+    // un monopatín cerca de mi ubicación
 
+    @GetMapping("/reporteG/latitud/{latitud}/longitud/{longitud}/rango/{rango}")
+    public ResponseEntity<List<ReporteMonopatinesCercanosDTO>> generarReporteDeMonopatinesCercanos(
+            @PathVariable double latitud, @PathVariable double longitud, @PathVariable double rango
+    ) {
+        try {
+            return ResponseEntity.ok(usuarioService.generarReporteD(latitud,longitud,rango));
+        } catch (NotFoundException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 }
 

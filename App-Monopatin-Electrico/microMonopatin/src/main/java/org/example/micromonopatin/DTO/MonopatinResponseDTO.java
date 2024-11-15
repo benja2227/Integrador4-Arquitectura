@@ -11,8 +11,8 @@ import lombok.NoArgsConstructor;
 public class MonopatinResponseDTO {
     private Long id;
     private int kmTotales;
-    private Long latitud;
-    private Long longitud;
+    private double latitud;
+    private double longitud;
     private boolean enMantenimiento;
     private int kmParaMantenimiento;
     private int tiempoDeUso;

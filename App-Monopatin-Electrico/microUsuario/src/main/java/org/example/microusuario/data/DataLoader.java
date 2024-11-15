@@ -17,8 +17,8 @@ public class DataLoader implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         // Cargar datos iniciales
-        Usuario usuario1 = new Usuario(1L, "Carlos", "Gomez", "carlos.gomez@example.com", "123456789");
-        Usuario usuario2 = new Usuario(2L, "Ana", "Lopez", "ana.lopez@example.com", "987654321");
+        Usuario usuario1 = new Usuario(1L, "Carlos", "Gomez", "carlos.gomez@example.com", "123456789",785340.4, 333111.20);
+        Usuario usuario2 = new Usuario(2L, "Ana", "Lopez", "ana.lopez@example.com", "987654321",329856.0, 220343.12);
 
         usuarioRepository.save(usuario1);
         usuarioRepository.save(usuario2);

@@ -22,10 +22,10 @@ public class Monopatin {
 
     @NotNull
     @NotEmpty
-    private Long latitud;
+    private double latitud;
     @NotNull
     @NotEmpty
-    private Long longitud;
+    private double longitud;
     @NotNull
     @NotEmpty
     private boolean enMantenimiento;

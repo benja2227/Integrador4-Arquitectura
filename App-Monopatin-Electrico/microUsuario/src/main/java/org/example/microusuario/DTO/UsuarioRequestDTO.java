@@ -27,5 +27,9 @@ public class UsuarioRequestDTO {
     private String email;
     @NotNull(message = "El teléfono es obligatorio")
     private String telefono;
+    @NotNull(message = "La latitud es obligatorio")
+    private double latitud;
+    @NotNull(message = "La longitud es obligatorio")
+    private double longitud;
 
 }

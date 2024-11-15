@@ -7,17 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-
-
-public class UsuarioResponseDTO  {
-
+public class ReporteMonopatinesCercanosDTO {
     private Long id;
-    private String nombre;
-    private String apellido;
-    private String email;
-    private String telefono;
     private double latitud;
-    private double Longitud;
-
-
+    private  double longitud;
 }
