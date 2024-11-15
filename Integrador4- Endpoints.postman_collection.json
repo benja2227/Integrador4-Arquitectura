@@ -1,0 +1,432 @@
+{
+	"info": {
+		"_postman_id": "9492a9b6-865c-431c-8eba-e207efc2c10a",
+		"name": "Integrador4- Endpoints",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30890240"
+	},
+	"item": [
+		{
+			"name": "Reporte A",
+			"item": [
+				{
+					"name": "http://localhost:8090/administrador/reporteA/1",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": " {\r\n    \"nombre\": \"Benjamin\",\r\n    \"apellido\": \"Gomez\",\r\n    \"edad\": 24,\r\n    \"genero\": \"Masculino\",\r\n    \"ciudadResidencia\": \"Tandil\",\r\n    \"dni\": 0123432,\r\n    \"lu\": 12\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8090/administrador/reporteA/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"administrador",
+								"reporteA",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8090/administrador/reporteA/1?includePausa=true",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/administrador/reporteA/1?includePausa=false",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"administrador",
+								"reporteA",
+								"1"
+							],
+							"query": [
+								{
+									"key": "includePausa",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8090/administrador/reporteA/1?includePausa=true",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/administrador/reporteA/1?includePausa=false",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"administrador",
+								"reporteA",
+								"1"
+							],
+							"query": [
+								{
+									"key": "includePausa",
+									"value": "false"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reporte B",
+			"item": [
+				{
+					"name": "http://localhost:8090/administrador/reporteA/1?includePausa=true",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/administrador/idcuenta/1/estado/false",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"administrador",
+								"idcuenta",
+								"1",
+								"estado",
+								"false"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8090/administrador/reporteA/1?includePausa=true",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/administrador/idcuenta/1/estado/true",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"administrador",
+								"idcuenta",
+								"1",
+								"estado",
+								"true"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8090/administrador/reporteA/1?includePausa=true",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/cuenta",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"cuenta"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reporte C",
+			"item": [
+				{
+					"name": "http://localhost:8090/administrador/reporteA/1?includePausa=true",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/administrador/reporteC/cantViajes/1/anio/2024",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"administrador",
+								"reporteC",
+								"cantViajes",
+								"1",
+								"anio",
+								"2024"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8090/administrador/reporteA/1?includePausa=true",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/viaje",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"viaje"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reporte D",
+			"item": [
+				{
+					"name": "http://localhost:8090/administrador/reporteA/1?includePausa=true",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/administrador/reporteD?mesInicio=1&mesFinal=12&anio=2023",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"administrador",
+								"reporteD"
+							],
+							"query": [
+								{
+									"key": "mesInicio",
+									"value": "1"
+								},
+								{
+									"key": "mesFinal",
+									"value": "12"
+								},
+								{
+									"key": "anio",
+									"value": "2023"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reporte E",
+			"item": [
+				{
+					"name": "http://localhost:8090/usuario/reporteG/latitud/329856.0/longitud/220343.12/rango/1000",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/administrador/reporteE",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"administrador",
+								"reporteE"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8090/usuario/reporteG/latitud/329856.0/longitud/220343.12/rango/1000",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/monopatin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"monopatin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reporte F",
+			"item": [
+				{
+					"name": "http://localhost:8090/administrador",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"id\": 3,\r\n        \"precio\": 500.0,\r\n        \"precioEspecial\": 1000.0,\r\n        \"fecha\": \"2024-12-20T23:05:39\",\r\n        \"topeKm\": 200\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/administrador",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"administrador"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8090/administrador",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \r\n        \"precio\": 500.0,\r\n        \"precioEspecial\": 1000.0,\r\n        \"fecha\": \"2024-12-20T23:05:39\",\r\n        \"topeKm\": 200\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8090/administrador",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"administrador"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reporte G",
+			"item": [
+				{
+					"name": "http://localhost:8090/usuario/reporteG/latitud/329856.0/longitud/220343.12/rango/1000",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/usuario/reporteG/latitud/329856.0/longitud/220343.12/rango/1000",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"usuario",
+								"reporteG",
+								"latitud",
+								"329856.0",
+								"longitud",
+								"220343.12",
+								"rango",
+								"1000"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8090/usuario/reporteG/latitud/329856.0/longitud/220343.12/rango/1000",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/monopatin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"monopatin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8090/usuario/reporteG/latitud/329856.0/longitud/220343.12/rango/1000",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8090/administrador/reporteE",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8090",
+							"path": [
+								"administrador",
+								"reporteE"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
